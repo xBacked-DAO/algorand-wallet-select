@@ -1,3 +1,13 @@
+# yarn
+yarn.lock
+.yarn/
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
 # node modules
 node_modules
 
@@ -10,6 +20,4 @@ lib
 #misc
 .DS_Store
 
-yarn.lock
 .eslintcache
-© 2021 GitHub, Inc.
