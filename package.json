@@ -1,0 +1,47 @@
+{
+  "name": "@xbacked-dao/algorand-wallet-selector",
+  "version": "0.1.0",
+  "description": "Web3 Algorand wallet selector",
+  "main": "src/index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "clean:example": "rm -rf example/build",
+    "clean:node_modules": "rm -rf node_modules && cd example && rm -rf node_modules",
+    "clean:all": "npm run clean && npm run clean:example && npm run clean:node_modules",
+    "bootstrap": "npm install && cd example && npm install",
+    "start": "npm run check && cd example && npm run start",
+    "build": "webpack",
+    "build:example": "npm run bootstrap && npm run build && cd example && npm run build",
+    "test": "mocha --require ./babel-polyfill.js test/**/*.spec.js",
+    "lint": "tslint ./src/*.ts ./src/**/*.ts",
+    "format": "prettier ./src/*.ts ./src/**/*.ts --write",
+    "check": "npm run clean && npm run lint && npm run format && npm run build && npm run test",
+    "reset": "npm run clean:all && npm run bootstrap && npm run check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xBacked-DAO/algorand-wallet-selector.git"
+  },
+  "keywords": [
+    "algorand",
+    "wallet",
+    "web3",
+    "provider",
+    "modal"
+  ],
+  "author": "xBacked DAO",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xBacked-DAO/algorand-wallet-selector/issues"
+  },
+  "homepage": "https://github.com/xBacked-DAO/algorand-wallet-selector#readme",
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-react": "^7.14.5"
+  },
+  "packageManager": "yarn@3.0.2"
+}

@@ -10,10 +10,7 @@ import {
   MODAL_CARD_CLASSNAME,
 } from "../constants";
 
-const SLightbox =
-  styled.div <
-  ILightboxStyleProps >
-  `
+const SLightbox = styled.div`
   transition: opacity 0.1s ease-in-out;
   text-align: center;
   position: fixed;
@@ -43,10 +40,7 @@ const SLightbox =
   }
 `;
 
-const SModalContainer =
-  styled.div <
-  IModalContainerStyleProps >
-  `
+const SModalContainer = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
@@ -67,10 +61,7 @@ const SHitbox = styled.div`
   bottom: 0;
 `;
 
-const SModalCard =
-  styled.div <
-  IModalCardStyleProps >
-  `
+const SModalCard = styled.div`
   position: relative;
   width: 100%;
   background-color: ${({ themeColors }) => themeColors.background};
@@ -101,7 +92,6 @@ const INITIAL_STATE = {
 
 export class Modal {
   constructor(props) {
-    super(props);
     window.updateWeb3Modal = async (state) => {
       this.setState(state);
     };
