@@ -1,17 +1,17 @@
-import * as React from "react";
-import * as PropTypes from "prop-types";
-import styled from "styled-components";
+import * as React from 'react'
+import * as PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 
-import { Provider } from "./Provider";
+import { Provider } from './Provider'
 import {
   MODAL_LIGHTBOX_CLASSNAME,
   MODAL_CONTAINER_CLASSNAME,
   MODAL_HITBOX_CLASSNAME,
   MODAL_CARD_CLASSNAME,
-} from "../constants";
+} from '../constants'
 
 const SLightbox = styled.div`
   transition: opacity 0.1s ease-in-out;
@@ -25,15 +25,15 @@ const SLightbox = styled.div`
   z-index: 2;
   will-change: opacity;
   background-color: ${({ opacity }) => {
-    let alpha = 0.4;
-    if (typeof opacity === "number") {
-      alpha = opacity;
+    let alpha = 0.4
+    if (typeof opacity === 'number') {
+      alpha = opacity
     }
-    return `rgba(0, 0, 0, ${alpha})`;
+    return `rgba(0, 0, 0, ${alpha})`
   }};
   opacity: ${({ show }) => (show ? 1 : 0)};
-  visibility: ${({ show }) => (show ? "visible" : "hidden")};
-  pointer-events: ${({ show }) => (show ? "auto" : "none")};
+  visibility: ${({ show }) => (show ? 'visible' : 'hidden')};
+  pointer-events: ${({ show }) => (show ? 'auto' : 'none')};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,7 +41,7 @@ const SLightbox = styled.div`
   & * {
     box-sizing: border-box !important;
   }
-`;
+`
 
 const SModalContainer = styled.div`
   position: relative;
@@ -52,9 +52,9 @@ const SModalContainer = styled.div`
   align-items: center;
   justify-content: center;
   opacity: ${({ show }) => (show ? 1 : 0)};
-  visibility: ${({ show }) => (show ? "visible" : "hidden")};
-  pointer-events: ${({ show }) => (show ? "auto" : "none")};
-`;
+  visibility: ${({ show }) => (show ? 'visible' : 'hidden')};
+  pointer-events: ${({ show }) => (show ? 'auto' : 'none')};
+`
 
 const SHitbox = styled.div`
   position: absolute;
@@ -62,7 +62,7 @@ const SHitbox = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-`;
+`
 
 const SModalCard = styled.div`
   position: relative;
@@ -72,32 +72,32 @@ const SModalCard = styled.div`
   margin: 10px;
   padding: 0;
   opacity: ${({ show }) => (show ? 1 : 0)};
-  visibility: ${({ show }) => (show ? "visible" : "hidden")};
-  pointer-events: ${({ show }) => (show ? "auto" : "none")};
+  visibility: ${({ show }) => (show ? 'visible' : 'hidden')};
+  pointer-events: ${({ show }) => (show ? 'auto' : 'none')};
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  max-width: ${({ maxWidth }) => (maxWidth ? `${maxWidth}px` : "800px")};
+  max-width: ${({ maxWidth }) => (maxWidth ? `${maxWidth}px` : '800px')};
   min-width: fit-content;
   max-height: 100%;
   overflow: auto;
 
   @media screen and (max-width: 768px) {
-    max-width: ${({ maxWidth }) => (maxWidth ? `${maxWidth}px` : "500px")};
+    max-width: ${({ maxWidth }) => (maxWidth ? `${maxWidth}px` : '500px')};
     grid-template-columns: 1fr;
   }
-`;
+`
 
 const INITIAL_STATE = {
   show: false,
   lightboxOffset: 0,
-};
+}
 
 export class Modal {
   constructor(props) {
-    window.updateWeb3Modal = async (state) => {
-      this.setState(state);
-    };
+    window.updateWeb3Modal = async(state) => {
+      this.setState(state)
+    }
   }
   propTypes = {
     userOptions: PropTypes.object.isRequired,
@@ -115,25 +115,25 @@ export class Modal {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.show && !this.state.show) {
-      this.props.resetState();
+      this.props.resetState()
     }
     if (this.lightboxRef) {
-      const lightboxRect = this.lightboxRef.getBoundingClientRect();
-      const lightboxOffset = lightboxRect.top > 0 ? lightboxRect.top : 0;
+      const lightboxRect = this.lightboxRef.getBoundingClientRect()
+      const lightboxOffset = lightboxRect.top > 0 ? lightboxRect.top : 0
 
       if (
         lightboxOffset !== INITIAL_STATE.lightboxOffset &&
         lightboxOffset !== this.state.lightboxOffset
       ) {
-        this.setState({ lightboxOffset });
+        this.setState({ lightboxOffset })
       }
     }
   }
 
   render = () => {
-    const { show, lightboxOffset } = this.state;
+    const { show, lightboxOffset } = this.state
 
-    const { onClose, lightboxOpacity, userOptions, themeColors } = this.props;
+    const { onClose, lightboxOpacity, userOptions, themeColors } = this.props
 
     return (
       // <SLightbox
@@ -229,6 +229,6 @@ export class Modal {
           </div>
         </Dialog>
       </Transition>
-    );
+    )
   };
 }

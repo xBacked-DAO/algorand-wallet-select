@@ -21,7 +21,7 @@
     "build": "webpack",
     "build:example": "npm run bootstrap && npm run build && cd example && npm run build",
     "test": "mocha --require ./babel-polyfill.js test/**/*.spec.js",
-    "lint": "",
+    "lint": "eslint ./src/*.js ./src/**/*.js",
     "format": "",
     "check": "npm run clean && npm run lint && npm run format && npm run build && npm run test",
     "reset": "npm run clean:all && npm run bootstrap && npm run check",
@@ -47,6 +47,7 @@
   "dependencies": {
     "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.8",
+    "@babel/eslint-parser": "^7.5.4",
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.15.8",
     "@babel/preset-react": "^7.14.5",
@@ -70,5 +71,8 @@
     "webpack": "4.44.2",
     "webpack-cli": "^4.9.0"
   },
-  "packageManager": "yarn@3.0.2"
+  "packageManager": "yarn@3.0.2",
+  "devDependencies": {
+    "eslint": "^8.0.1"
+  }
 }

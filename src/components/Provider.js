@@ -1,5 +1,5 @@
-import * as React from "react";
-import styled from "styled-components";
+import * as React from 'react'
+import styled from 'styled-components'
 
 import {
   PROVIDER_WRAPPER_CLASSNAME,
@@ -7,7 +7,7 @@ import {
   PROVIDER_ICON_CLASSNAME,
   PROVIDER_NAME_CLASSNAME,
   PROVIDER_DESCRIPTION_CLASSNAME,
-} from "../constants";
+} from '../constants'
 
 const SIcon = styled.div`
   width: 45px;
@@ -27,7 +27,7 @@ const SIcon = styled.div`
     width: 8.5vw;
     height: 8.5vw;
   }
-`;
+`
 
 const SName =
   styled.div`
@@ -39,7 +39,7 @@ const SName =
   @media screen and (max-width: 768px) {
     font-size: 5vw;
   }
-`;
+`
 
 const SDescription =
   styled.div`
@@ -50,7 +50,7 @@ const SDescription =
   @media screen and (max-width: 768px) {
     font-size: 4vw;
   }
-`;
+`
 
 const SProviderContainer =
   styled.div`
@@ -66,7 +66,7 @@ const SProviderContainer =
   @media screen and (max-width: 768px) {
     padding: 1vw;
   }
-`;
+`
 
 const SProviderWrapper =
   styled.div`
@@ -84,11 +84,11 @@ const SProviderWrapper =
       background-color: ${({ themeColors }) => themeColors.hover};
     }
   }
-`;
+`
 
 export function Provider(props) {
   const { name, logo, description, themeColors, onClick, ...otherProps } =
-    props;
+    props
   return (
     <SProviderWrapper
       themeColors={themeColors}
@@ -114,5 +114,5 @@ export function Provider(props) {
         </SDescription>
       </SProviderContainer>
     </SProviderWrapper>
-  );
+  )
 }

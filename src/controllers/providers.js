@@ -1,10 +1,10 @@
-import * as list from "../providers";
+import * as list from '../providers'
 import {
   CONNECT_EVENT,
   ERROR_EVENT,
   INJECTED_PROVIDER_ID,
   CACHED_PROVIDER_KEY
-} from "../constants";
+} from '../constants'
 import {
   isMobile,
   IProviderControllerOptions,
@@ -20,11 +20,11 @@ import {
   IProviderUserOptions,
   getInjectedProvider,
   findMatchingRequiredOptions
-} from "../helpers";
-import { EventController } from "./events";
+} from '../helpers'
+import { EventController } from './events'
 
 export class ProviderController {
-  cachedProvider = "";
+  cachedProvider = '';
   shouldCacheProvider = false;
   disableInjectedProvider = false;
 
@@ -32,136 +32,136 @@ export class ProviderController {
   injectedProvider = null;
   providers = [];
   providerOptions;
-  network = "";
+  network = '';
 
   constructor(opts) {
-    this.cachedProvider = getLocal(CACHED_PROVIDER_KEY) || "";
+    this.cachedProvider = getLocal(CACHED_PROVIDER_KEY) || ''
 
-    this.disableInjectedProvider = opts.disableInjectedProvider;
-    this.shouldCacheProvider = opts.cacheProvider;
-    this.providerOptions = opts.providerOptions;
-    this.network = opts.network;
+    this.disableInjectedProvider = opts.disableInjectedProvider
+    this.shouldCacheProvider = opts.cacheProvider
+    this.providerOptions = opts.providerOptions
+    this.network = opts.network
 
-    this.injectedProvider = getInjectedProvider();
+    this.injectedProvider = getInjectedProvider()
 
     this.providers = Object.keys(list.connectors).map((id) => {
-      let providerInfo;
+      let providerInfo
       if (id === INJECTED_PROVIDER_ID) {
-        providerInfo = this.injectedProvider || list.providers.FALLBACK;
+        providerInfo = this.injectedProvider || list.providers.FALLBACK
       } else {
-        providerInfo = getProviderInfoById(id);
+        providerInfo = getProviderInfoById(id)
       }
       // parse custom display options
       if (this.providerOptions[id]) {
-        const options = this.providerOptions[id];
-        if (typeof options.display !== "undefined") {
+        const options = this.providerOptions[id]
+        if (typeof options.display !== 'undefined') {
           providerInfo = {
             ...providerInfo,
             ...this.providerOptions[id].display
-          };
+          }
         }
       }
       return {
         ...providerInfo,
         connector: list.connectors[id],
         package: providerInfo.package
-      };
-    });
+      }
+    })
     // parse custom providers
     Object.keys(this.providerOptions)
-      .filter(key => key.startsWith("custom-"))
+      .filter(key => key.startsWith('custom-'))
       .map(id => {
         if (id && this.providerOptions[id]) {
-          const options = this.providerOptions[id];
+          const options = this.providerOptions[id]
           if (
-            typeof options.display !== "undefined" &&
-            typeof options.connector !== "undefined"
+            typeof options.display !== 'undefined' &&
+            typeof options.connector !== 'undefined'
           ) {
             this.providers.push({
               ...list.providers.FALLBACK,
               id,
               ...options.display,
               connector: options.connector
-            });
+            })
           }
         }
-      });
+      })
   }
 
   shouldDisplayProvider(id) {
-    const provider = this.getProvider(id);
-    if (typeof provider !== "undefined") {
-      const providerPackageOptions = this.providerOptions[id];
+    const provider = this.getProvider(id)
+    if (typeof provider !== 'undefined') {
+      const providerPackageOptions = this.providerOptions[id]
       if (providerPackageOptions) {
-        const isProvided = !!providerPackageOptions.package;
+        const isProvided = !!providerPackageOptions.package
         if (isProvided) {
           const requiredOptions = provider.package
             ? provider.package.required
-            : undefined;
+            : undefined
           if (requiredOptions && requiredOptions.length) {
-            const providedOptions = providerPackageOptions.options;
+            const providedOptions = providerPackageOptions.options
             if (providedOptions && Object.keys(providedOptions).length) {
               const matches = findMatchingRequiredOptions(
                 requiredOptions,
                 providedOptions
-              );
+              )
               if (requiredOptions.length === matches.length) {
-                return true;
+                return true
               }
             }
           } else {
-            return true;
+            return true
           }
         }
       }
     }
-    return false;
+    return false
   }
 
   getUserOptions = () => {
-    const mobile = isMobile();
+    const mobile = isMobile()
 
-    const defaultProviderList = this.providers.map(({ id }) => id);
+    const defaultProviderList = this.providers.map(({ id }) => id)
 
     const displayInjected =
-      !!this.injectedProvider && !this.disableInjectedProvider;
-    const onlyInjected = displayInjected && mobile;
+      !!this.injectedProvider && !this.disableInjectedProvider
+    const onlyInjected = displayInjected && mobile
 
-    const providerList = [];
+    const providerList = []
 
     if (onlyInjected) {
-      providerList.push(INJECTED_PROVIDER_ID);
+      providerList.push(INJECTED_PROVIDER_ID)
     } else {
       if (displayInjected) {
-        providerList.push(INJECTED_PROVIDER_ID);
+        providerList.push(INJECTED_PROVIDER_ID)
       }
 
       defaultProviderList.forEach((id) => {
         if (id !== INJECTED_PROVIDER_ID) {
-          const result = this.shouldDisplayProvider(id);
+          const result = this.shouldDisplayProvider(id)
           if (result) {
-            providerList.push(id);
+            providerList.push(id)
           }
         }
-      });
+      })
     }
 
-    const userOptions = [];
+    const userOptions = []
 
     providerList.forEach((id) => {
-      let provider = this.getProvider(id);
-      if (typeof provider !== "undefined") {
-        const { id, name, logo, connector } = provider;
+      let provider = this.getProvider(id)
+      if (typeof provider !== 'undefined') {
+        const { id, name, logo, connector } = provider
         userOptions.push({
           name,
           logo,
           description: getProviderDescription(provider),
           onClick: () => this.connectTo(id, connector)
-        });
+        })
       }
-    });
+    })
 
-    return userOptions;
+    return userOptions
   };
 
   getProvider(id) {
@@ -169,7 +169,7 @@ export class ProviderController {
       this.providers,
       x => x.id === id,
       undefined
-    );
+    )
   }
 
   getProviderOption(id, key) {
@@ -177,38 +177,38 @@ export class ProviderController {
       this.providerOptions[id] &&
       this.providerOptions[id][key]
       ? this.providerOptions[id][key]
-      : {};
+      : {}
   }
 
   clearCachedProvider() {
-    this.cachedProvider = "";
-    removeLocal(CACHED_PROVIDER_KEY);
+    this.cachedProvider = ''
+    removeLocal(CACHED_PROVIDER_KEY)
   }
 
   setCachedProvider(id) {
-    this.cachedProvider = id;
-    setLocal(CACHED_PROVIDER_KEY, id);
+    this.cachedProvider = id
+    setLocal(CACHED_PROVIDER_KEY, id)
   }
 
   connectTo = async (id, connector) => {
     try {
-      const providerPackage = this.getProviderOption(id, "package");
-      const providerOptions = this.getProviderOption(id, "options");
-      const opts = { network: this.network || undefined, ...providerOptions };
-      const provider = await connector(providerPackage, opts);
-      this.eventController.trigger(CONNECT_EVENT, provider);
+      const providerPackage = this.getProviderOption(id, 'package')
+      const providerOptions = this.getProviderOption(id, 'options')
+      const opts = { network: this.network || undefined, ...providerOptions }
+      const provider = await connector(providerPackage, opts)
+      this.eventController.trigger(CONNECT_EVENT, provider)
       if (this.shouldCacheProvider && this.cachedProvider !== id) {
-        this.setCachedProvider(id);
+        this.setCachedProvider(id)
       }
     } catch (error) {
-      this.eventController.trigger(ERROR_EVENT);
+      this.eventController.trigger(ERROR_EVENT)
     }
   };
 
   async connectToCachedProvider() {
-    const provider = this.getProvider(this.cachedProvider);
-    if (typeof provider !== "undefined") {
-      await this.connectTo(provider.id, provider.connector);
+    const provider = this.getProvider(this.cachedProvider)
+    if (typeof provider !== 'undefined') {
+      await this.connectTo(provider.id, provider.connector)
     }
   }
 
@@ -216,19 +216,19 @@ export class ProviderController {
     this.eventController.on({
       event,
       callback
-    });
+    })
 
     return () =>
       this.eventController.off({
         event,
         callback
-      });
+      })
   }
 
   off(event, callback) {
     this.eventController.off({
       event,
       callback
-    });
+    })
   }
 }

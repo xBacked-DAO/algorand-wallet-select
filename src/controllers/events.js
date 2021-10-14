@@ -2,11 +2,11 @@ export class EventController {
   _eventCallbacks;
 
   constructor() {
-    this._eventCallbacks = [];
+    this._eventCallbacks = []
   }
 
   on(eventCallback) {
-    this._eventCallbacks.push(eventCallback);
+    this._eventCallbacks.push(eventCallback)
   }
 
   off(eventObj) {
@@ -17,28 +17,28 @@ export class EventController {
           (eventCallback) =>
             eventCallback.event !== eventObj.event ||
             eventCallback.callback !== eventObj.callback
-        );
+        )
       } // No callback to remove, remove entire event
       else {
         this._eventCallbacks = this._eventCallbacks.filter(
           (eventCallback) =>
             eventCallback.event !== eventObj.event
-        );
+        )
       }
     } else {
-      this._eventCallbacks = [];
+      this._eventCallbacks = []
     }
   }
 
   trigger(event) {
     let eventCallbacks = this._eventCallbacks.filter(
       (eventCallback) => eventCallback.event === event
-    );
+    )
 
     if (eventCallbacks && eventCallbacks.length) {
       eventCallbacks.forEach((eventCallback) => {
-        eventCallback.callback(result);
-      });
+        eventCallback.callback(result)
+      })
     }
   }
 }
