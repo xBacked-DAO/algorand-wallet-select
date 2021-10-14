@@ -1,1 +1,6 @@
-export * from './Modal'
+
+import { Selector} from './selector';
+
+export { 
+    Selector
+};
