@@ -1,13 +1,12 @@
 {
   "name": "example",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@headlessui/react": "^1.4.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "algorand-wallet-selector": "file:..",
+    "algorand-wallet-select": "^0.0.7",
     "autoprefixer": "^10.3.7",
     "postcss": "^8.3.9",
     "postcss-cli": "^9.0.1",
@@ -40,6 +39,11 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "react-app"
     ]
   }
 }

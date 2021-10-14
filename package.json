@@ -1,26 +1,31 @@
 {
-  "name": "@xbacked-dao/algorand-wallet-selector",
-  "version": "0.1.0",
+  "name": "algorand-wallet-select",
+  "version": "0.0.7",
   "description": "Web3 Algorand wallet selector",
-  "main": "src/index.js",
+  "main": "dist/index.js",
+  "unpkg": "dist/index.js",
   "directories": {
-    "doc": "docs",
+    "dist": "dist",
     "test": "test"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "clean": "rm -rf dist",
     "clean:example": "rm -rf example/build",
     "clean:node_modules": "rm -rf node_modules && cd example && rm -rf node_modules",
     "clean:all": "npm run clean && npm run clean:example && npm run clean:node_modules",
     "bootstrap": "npm install && cd example && npm install",
-    "start": "npm run check && cd example && npm run start",
+    "publish": "npm run check && yarn npm publish",
     "build": "webpack",
     "build:example": "npm run bootstrap && npm run build && cd example && npm run build",
     "test": "mocha --require ./babel-polyfill.js test/**/*.spec.js",
     "lint": "",
     "format": "",
     "check": "npm run clean && npm run lint && npm run format && npm run build && npm run test",
-    "reset": "npm run clean:all && npm run bootstrap && npm run check"
+    "reset": "npm run clean:all && npm run bootstrap && npm run check",
+    "watch:css": "postcss src/styles/tailwind.css -o src/styles/output.css"
   },
   "repository": {
     "type": "git",
@@ -47,14 +52,23 @@
     "@babel/preset-react": "^7.14.5",
     "@babel/register": "^7.15.3",
     "@headlessui/react": "^1.4.1",
+    "autoprefixer": "^10.3.7",
     "babel-loader": "8.1.0",
+    "css-loader": "4.2.0",
     "mocha": "^9.1.2",
+    "postcss": "^8.3.9",
+    "postcss-cli": "^9.0.1",
+    "postcss-import": "^14.0.2",
+    "postcss-loader": "4.2.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "style-loader": "2.0.0",
     "styled-components": "^5.3.1",
+    "tailwindcss": "^2.2.17",
     "url-loader": "^4.1.1",
-    "webpack": "4.44.2"
+    "webpack": "4.44.2",
+    "webpack-cli": "^4.9.0"
   },
   "packageManager": "yarn@3.0.2"
 }

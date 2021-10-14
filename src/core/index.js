@@ -22,6 +22,9 @@ const defaultOpts = {
   network: "",
 };
 
+// DELETE ME
+const getThemeColors = () => [];
+
 export class Core {
   constructor(opts) {
     this.show = INITIAL_STATE.show;

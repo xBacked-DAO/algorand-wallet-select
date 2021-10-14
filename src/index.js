@@ -1,3 +1,5 @@
+import './styles/output.css'
+
 import { Core } from "./core";
 
 export * from "./components";

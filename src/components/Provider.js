@@ -30,9 +30,7 @@ const SIcon = styled.div`
 `;
 
 const SName =
-  styled.div <
-  IStyedThemeColorOptions >
-  `
+  styled.div`
   width: 100%;
   font-size: 24px;
   font-weight: 700;
@@ -44,9 +42,7 @@ const SName =
 `;
 
 const SDescription =
-  styled.div <
-  IStyedThemeColorOptions >
-  `
+  styled.div`
   width: 100%;
   font-size: 18px;
   margin: 0.333em 0;
@@ -57,9 +53,7 @@ const SDescription =
 `;
 
 const SProviderContainer =
-  styled.div <
-  IStyedThemeColorOptions >
-  `
+  styled.div`
   transition: background-color 0.2s ease-in-out;
   width: 100%;
   display: flex;
@@ -75,9 +69,7 @@ const SProviderContainer =
 `;
 
 const SProviderWrapper =
-  styled.div <
-  IStyedThemeColorOptions >
-  `
+  styled.div`
   width: 100%;
   padding: 8px;
   display: flex;
