@@ -14,15 +14,18 @@ module.exports = {
     globalObject: "this"
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx", ".json"]
   },
   devtool: "source-map",
   module: {
     rules: [
       {
-        test: /\.(js)$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ['babel-loader'],
+        resolve: {
+          extensions: [".jsx", ".js", ".json"]
+        }
       },
       {
         test: /\.css$/i,

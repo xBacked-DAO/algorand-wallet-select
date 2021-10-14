@@ -7,17 +7,13 @@ import {
 } from '../constants'
 import {
   isMobile,
-  IProviderControllerOptions,
-  IProviderOptions,
   IProviderDisplayWithConnector,
   getLocal,
   setLocal,
   removeLocal,
   getProviderInfoById,
   getProviderDescription,
-  IProviderInfo,
   filterMatches,
-  IProviderUserOptions,
   getInjectedProvider,
   findMatchingRequiredOptions
 } from '../helpers'
@@ -190,7 +186,7 @@ export class ProviderController {
     setLocal(CACHED_PROVIDER_KEY, id)
   }
 
-  connectTo = async (id, connector) => {
+  connectTo = async(id, connector) => {
     try {
       const providerPackage = this.getProviderOption(id, 'package')
       const providerOptions = this.getProviderOption(id, 'options')

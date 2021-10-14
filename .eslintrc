@@ -1,6 +1,13 @@
 {
     "parser": "@babel/eslint-parser",
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "env": {
+        "browser": true,
+        "node": true
+    },
     "rules": {
         "space-before-function-paren": [
             "error",
@@ -14,6 +21,9 @@
         "quotes": [
             "error",
             "single"
+        ],
+        "react/prop-types": [
+            "off"
         ]
     }
 }

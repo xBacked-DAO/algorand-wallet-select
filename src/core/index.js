@@ -1,140 +1,17 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
+import { Modal } from '../components'
 import {
   WEB3_CONNECT_MODAL_ID,
-  CONNECT_EVENT,
-  ERROR_EVENT,
-  CLOSE_EVENT,
 } from '../constants'
-import { themesList } from '../themes'
-import { Modal } from '../components'
-import { EventController, ProviderController } from '../controllers'
-
-const INITIAL_STATE = { show: false }
-
-const defaultOpts = {
-  lightboxOpacity: 0.4,
-  theme: themesList.default.name,
-  cacheProvider: false,
-  disableInjectedProvider: false,
-  providerOptions: {},
-  network: '',
-}
-
-// DELETE ME
-const getThemeColors = () => []
+import { ProvideModal } from '../providers/use'
 
 export class Core {
-  constructor(opts) {
-    this.show = INITIAL_STATE.show
-    this.eventController = new EventController()
-    this.themeColors
-    this.lightboxOpacity
-    this.providerController
-    this.userOptions
+  show = true;
 
-    const options = {
-      ...defaultOpts,
-      ...opts,
-    }
-
-    this.lightboxOpacity = options.lightboxOpacity
-    this.themeColors = getThemeColors(options.theme)
-
-    this.providerController = new ProviderController({
-      disableInjectedProvider: options.disableInjectedProvider,
-      cacheProvider: options.cacheProvider,
-      providerOptions: options.providerOptions,
-      network: options.network,
-    })
-
-    this.providerController.on(CONNECT_EVENT, (provider) =>
-      this.onConnect(provider)
-    )
-    this.providerController.on(ERROR_EVENT, (error) => this.onError(error))
-
-    this.userOptions = this.providerController.getUserOptions()
+  constructor() {
     this.renderModal()
-  }
-
-  get cachedProvider() {
-    return this.providerController.cachedProvider
-  }
-
-  // --------------- PUBLIC METHODS --------------- //
-
-  connect = () =>
-    new Promise(async(resolve, reject) => {
-      this.on(CONNECT_EVENT, (provider) => resolve(provider))
-      this.on(ERROR_EVENT, (error) => reject(error))
-      this.on(CLOSE_EVENT, () => reject('Modal closed by user'))
-      await this.toggleModal()
-    });
-
-  connectTo = (id) =>
-    new Promise(async(resolve, reject) => {
-      this.on(CONNECT_EVENT, (provider) => resolve(provider))
-      this.on(ERROR_EVENT, (error) => reject(error))
-      this.on(CLOSE_EVENT, () => reject('Modal closed by user'))
-      const provider = this.providerController.getProvider(id)
-      if (!provider) {
-        return reject(
-          new Error(
-            `Cannot connect to provider (${id}), check provider options`
-          )
-        )
-      }
-      await this.providerController.connectTo(provider.id, provider.connector)
-    });
-
-  async toggleModal() {
-    if (this.cachedProvider) {
-      await this.providerController.connectToCachedProvider()
-      return
-    }
-    if (
-      this.userOptions &&
-      this.userOptions.length === 1 &&
-      this.userOptions[0].name
-    ) {
-      await this.userOptions[0].onClick()
-      return
-    }
-    await this._toggleModal()
-  }
-
-  on(event, callback) {
-    this.eventController.on({
-      event,
-      callback,
-    })
-
-    return () =>
-      this.eventController.off({
-        event,
-        callback,
-      })
-  }
-
-  off(event, callback) {
-    this.eventController.off({
-      event,
-      callback,
-    })
-  }
-
-  clearCachedProvider() {
-    this.providerController.clearCachedProvider()
-  }
-
-  setCachedProvider(id) {
-    this.providerController.setCachedProvider(id)
-  }
-
-  async updateTheme(theme) {
-    this.themeColors = getThemeColors(theme)
-    await this.updateState({ themeColors: this.themeColors })
   }
 
   renderModal() {
@@ -143,57 +20,12 @@ export class Core {
     document.body.appendChild(el)
 
     ReactDOM.render(
-      <Modal
-        themeColors={this.themeColors}
-        userOptions={this.userOptions}
-        onClose={this.onClose}
-        resetState={this.resetState}
-        lightboxOpacity={this.lightboxOpacity}
-      />,
+      <div>
+        <ProvideModal>
+          <Modal show={this.show} />
+        </ProvideModal>
+      </div>,
       document.getElementById(WEB3_CONNECT_MODAL_ID)
     )
   }
-
-  _toggleModal = async() => {
-    const d = typeof window !== 'undefined' ? document : ''
-    const body = d ? d.body || d.getElementsByTagName('body')[0] : ''
-    if (body) {
-      if (this.show) {
-        body.style.overflow = ''
-      } else {
-        body.style.overflow = 'hidden'
-      }
-    }
-    await this.updateState({ show: !this.show })
-  };
-
-  onError = async(error) => {
-    if (this.show) {
-      await this._toggleModal()
-    }
-    this.eventController.trigger(ERROR_EVENT, error)
-  };
-
-  onConnect = async(provider) => {
-    if (this.show) {
-      await this._toggleModal()
-    }
-    this.eventController.trigger(CONNECT_EVENT, provider)
-  };
-
-  onClose = async() => {
-    if (this.show) {
-      await this._toggleModal()
-    }
-    this.eventController.trigger(CLOSE_EVENT)
-  };
-
-  updateState = async(state) => {
-    Object.keys(state).forEach((key) => {
-      this[key] = state[key]
-    })
-    await window.updateWeb3Modal(state)
-  };
-
-  resetState = () => this.updateState({ ...INITIAL_STATE });
 }

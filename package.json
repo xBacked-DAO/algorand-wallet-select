@@ -1,6 +1,6 @@
 {
   "name": "algorand-wallet-select",
-  "version": "0.0.7",
+  "version": "0.0.20",
   "description": "Web3 Algorand wallet selector",
   "main": "dist/index.js",
   "unpkg": "dist/index.js",
@@ -21,7 +21,7 @@
     "build": "webpack",
     "build:example": "npm run bootstrap && npm run build && cd example && npm run build",
     "test": "mocha --require ./babel-polyfill.js test/**/*.spec.js",
-    "lint": "eslint ./src/*.js ./src/**/*.js",
+    "lint": "eslint --fix src/ --ext .js --ext .jsx",
     "format": "",
     "check": "npm run clean && npm run lint && npm run format && npm run build && npm run test",
     "reset": "npm run clean:all && npm run bootstrap && npm run check",
@@ -73,6 +73,8 @@
   },
   "packageManager": "yarn@3.0.2",
   "devDependencies": {
-    "eslint": "^8.0.1"
+    "eslint": "^7.11.0",
+    "eslint-plugin-react": "^7.26.1",
+    "react-scripts": "^4.0.3"
   }
 }
