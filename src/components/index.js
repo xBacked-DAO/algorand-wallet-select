@@ -1,6 +1,7 @@
+import '../styles/main.css'
 
-import { Selector} from './selector';
+import { Selector } from './selector';
 
-export { 
+export {
     Selector
 };

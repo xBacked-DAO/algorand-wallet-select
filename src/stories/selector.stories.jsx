@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Selector } from '../components/selector';
+import { Selector } from '../components';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -15,7 +15,13 @@ export default {
 };
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template = (args) => <Selector {...args} />;
+const Template = (args) => (
+  <div>
+    <h1 className="text-lg">Selector goes here!</h1>
+    <Selector {...args} />
+    <p>Built with love by xBacked</p>
+  </div>
+);
 
 export const Basic = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
