@@ -1,6 +1,10 @@
 import React, { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 
+import { WalletButton } from './walletButton'
+import { wallets } from '../wallets';
+console.log(wallets)
+
 export const Modal = ({ isOpen, closeModal }) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -39,33 +43,43 @@ export const Modal = ({ isOpen, closeModal }) => {
             leaveTo="opacity-0 scale-95"
           >
             <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
-              <Dialog.Title
-                as="h3"
-                className="text-lg font-medium leading-6 text-gray-900"
-              >
-                Payment successful
-              </Dialog.Title>
-              <div className="mt-2">
-                <p className="text-sm text-gray-500">
-                  Your payment has been successfully submitted. We’ve sent you
-                  an email with all of the details of your order.
-                </p>
-              </div>
-
-              <div className="mt-4">
-                <button
-                  type="button"
-                  className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                  onClick={closeModal}
-                >
-                  Got it, thanks!
-                </button>
-              </div>
+              <ModalContent closeModal={closeModal} />
             </div>
           </Transition.Child>
         </div>
       </Dialog>
     </Transition>
+  );
+}
+
+const ModalContent = ({ closeModal }) => {
+  return (
+    <>
+      <Dialog.Title
+        as="h3"
+        className="text-lg font-medium leading-6 text-gray-900"
+      >
+        Payment successful
+      </Dialog.Title>
+
+      <div className="grid grid-cols-2 gap-4 mt-4">
+        {wallets.map(wallet =>
+          !!wallet ? (
+            <WalletButton info={wallet} onClick={() => { }} />
+          ) : null
+        )}
+      </div>
+
+      <div className="mt-4">
+        <button
+          type="button"
+          className="inline-flex justify-center px-4 py-2 text-sm font-medium text-red-900 bg-red-100 border border-transparent rounded-md hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-red-500"
+          onClick={closeModal}
+        >
+          Cancel
+        </button>
+      </div>
+    </>
   );
 }
 
