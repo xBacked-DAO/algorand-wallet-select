@@ -2,16 +2,28 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types';
 
 import { Modal } from './modal'
+import { ProvideWallet, useWallet } from '../context/ProvideWallet'
 
 /**
  * Primary UI component for user interaction
  */
 export const Selector = ({ returnWallet }) => {
-  let [isOpen, setIsOpen] = useState(false)
+  return (
+    <div>
+      <ProvideWallet>
+        <SelectorContent returnWallet={returnWallet} />
+      </ProvideWallet>
+    </div>
+  );
+};
 
-  function closeModal(walletData) {
+const SelectorContent = ({ returnWallet }) => {
+  let [isOpen, setIsOpen] = useState(false)
+  const { wallet } = useWallet();
+
+  function closeModal(walletInfo) {
     setIsOpen(false)
-    returnWallet(walletData)
+    returnWallet(walletInfo)
   }
 
   function openModal() {
@@ -29,6 +41,7 @@ export const Selector = ({ returnWallet }) => {
           Connect wallet
         </button>
       </div>
+      {!!wallet && (<p>{JSON.stringify(wallet)}</p>)}
       <Modal isOpen={isOpen} closeModal={closeModal} />
     </>
   );

@@ -4,6 +4,8 @@ import { Dialog, Transition } from '@headlessui/react'
 import { WalletButton } from './walletButton'
 import { wallets } from '../wallets';
 
+import { useWallet } from '../context/ProvideWallet'
+
 export const Modal = ({ isOpen, closeModal }) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -52,6 +54,11 @@ export const Modal = ({ isOpen, closeModal }) => {
 }
 
 const ModalContent = ({ closeModal }) => {
+  const { setWallet } = useWallet();
+  const onClick = (walletInfo) => {
+    setWallet(walletInfo);
+    closeModal(walletInfo);
+  }
   return (
     <>
       <Dialog.Title
@@ -64,7 +71,7 @@ const ModalContent = ({ closeModal }) => {
       <div className="grid grid-cols-2 gap-8 mt-4">
         {wallets.map(wallet =>
           !!wallet ? (
-            <WalletButton key={wallet.id} info={wallet} onClick={() => { console.log(wallet) }} />
+            <WalletButton key={wallet.id} info={wallet} onClick={() => onClick(wallet)} />
           ) : null
         )}
       </div>
