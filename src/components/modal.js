@@ -3,7 +3,6 @@ import { Dialog, Transition } from '@headlessui/react'
 
 import { WalletButton } from './walletButton'
 import { wallets } from '../wallets';
-console.log(wallets)
 
 export const Modal = ({ isOpen, closeModal }) => {
   return (
@@ -65,7 +64,7 @@ const ModalContent = ({ closeModal }) => {
       <div className="grid grid-cols-2 gap-4 mt-4">
         {wallets.map(wallet =>
           !!wallet ? (
-            <WalletButton info={wallet} onClick={() => { }} />
+            <WalletButton info={wallet} onClick={() => { console.log(wallet) }} />
           ) : null
         )}
       </div>

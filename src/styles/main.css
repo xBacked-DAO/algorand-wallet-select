@@ -24395,6 +24395,14 @@ video {
   animation: bounce 1s infinite;
 }
 
+.xcard {
+  transition: transform 0.3s ease-in-out;
+}
+
+.xcard:hover img {
+      transform: scale(1.05);
+    }
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

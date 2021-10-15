@@ -2,12 +2,15 @@ import React from 'react'
 
 export const WalletButton = ({ info, onClick }) => {
   return (
-    <div className="flex flex-col justify-center items-center">
-      <img src={info.logo} className="object-center object-cover rounded-full h-24 w-24 mb-2" />
-      <p className="text-lg font-bold mb-2">
+    <button
+      onClick={onClick}
+      className="xcard flex flex-col p-2 justify-center items-center rounded-md shadow hover:shadow-md focus:outline-none"
+    >
+      <img src={info.logo} className="object-center object-cover rounded-full h-20 w-20" />
+      <p className="text-lg font-bold">
         {info.name}
       </p>
-    </div>
+    </button>
   );
 }
 
