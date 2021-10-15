@@ -41,7 +41,7 @@ export const Modal = ({ isOpen, closeModal }) => {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+            <div className="inline-block w-full max-w-lg p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white border shadow-xl rounded-2xl">
               <ModalContent closeModal={closeModal} />
             </div>
           </Transition.Child>
@@ -58,18 +58,18 @@ const ModalContent = ({ closeModal }) => {
         as="h3"
         className="text-lg font-medium leading-6 text-gray-900"
       >
-        Payment successful
+        Select wallet
       </Dialog.Title>
 
-      <div className="grid grid-cols-2 gap-4 mt-4">
+      <div className="grid grid-cols-2 gap-8 mt-4">
         {wallets.map(wallet =>
           !!wallet ? (
-            <WalletButton info={wallet} onClick={() => { console.log(wallet) }} />
+            <WalletButton key={wallet.id} info={wallet} onClick={() => { console.log(wallet) }} />
           ) : null
         )}
       </div>
 
-      <div className="mt-4">
+      <div className="hidden">
         <button
           type="button"
           className="inline-flex justify-center px-4 py-2 text-sm font-medium text-red-900 bg-red-100 border border-transparent rounded-md hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-red-500"

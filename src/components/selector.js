@@ -7,11 +7,9 @@ import { Modal } from './modal'
  * Primary UI component for user interaction
  */
 export const Selector = ({ returnWallet }) => {
-  const walletData = { hello: "world" }
-
   let [isOpen, setIsOpen] = useState(false)
 
-  function closeModal() {
+  function closeModal(walletData) {
     setIsOpen(false)
     returnWallet(walletData)
   }
@@ -28,7 +26,7 @@ export const Selector = ({ returnWallet }) => {
           onClick={openModal}
           className="px-4 py-2 text-sm font-medium text-white bg-black rounded-md bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
         >
-          Open dialog
+          Connect wallet
         </button>
       </div>
       <Modal isOpen={isOpen} closeModal={closeModal} />
