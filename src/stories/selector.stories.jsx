@@ -17,9 +17,9 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args) => (
   <div>
-    <h1 className="text-lg">Selector goes here!</h1>
+    <h1 className="text-lg">Algorand Wallet Selector</h1>
+    <p>Built with 💚 by xBacked</p>
     <Selector {...args} />
-    <p>Built with love by xBacked</p>
   </div>
 );
 
