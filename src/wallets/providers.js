@@ -5,7 +5,6 @@ export const WALLETCONNECT = {
   name: "WalletConnect",
   logo: WalletConnectLogo,
   type: "qrcode",
-  check: "isWalletConnect",
   package: {
     required: [["infuraId", "rpc"]]
   }

@@ -1,37 +1,21 @@
-const ConnectToWalletConnect = (WalletConnectProvider, opts) => {
-  return new Promise(async (resolve, reject) => {
-    let bridge = "https://bridge.walletconnect.org";
-    let qrcode = true;
-    let infuraId = "";
-    let rpc = undefined;
-    let chainId = 1;
-    let qrcodeModalOptions = undefined;
-    console.log("wallet connect"); // todo remove dev item
-    if (opts) {
-      bridge = opts.bridge || bridge;
-      qrcode = typeof opts.qrcode !== "undefined" ? opts.qrcode : qrcode;
-      infuraId = opts.infuraId || "";
-      rpc = opts.rpc || undefined;
-      chainId =
-        opts.network && getChainId(opts.network) ? getChainId(opts.network) : 1;
-      qrcodeModalOptions = opts.qrcodeModalOptions || undefined;
-    }
+import WalletConnect from "@walletconnect/client";
+import QRCodeModal from "@walletconnect/qrcode-modal";
 
-    const provider = new WalletConnectProvider({
-      bridge,
-      qrcode,
-      infuraId,
-      rpc,
-      chainId,
-      qrcodeModalOptions
-    });
-    try {
-      await provider.enable();
-      resolve(provider);
-    } catch (e) {
-      reject(e);
-    }
+const checkConnection = (connector) => {
+  return (connector.connected);
+};
+
+const ConnectToWalletConnect = (opts) => {
+  const connector = new WalletConnect({
+    bridge: "https://bridge.walletconnect.org", // Required 
+    qrcodeModal: QRCodeModal,
   });
+
+  return {
+    provider: connector,
+    connect: async () => await connector.createSession(),
+    check: () => checkConnection(connector),
+  }
 };
 
 export default ConnectToWalletConnect;

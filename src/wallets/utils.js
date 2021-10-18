@@ -10,6 +10,6 @@ const data = {
 export const getWallets = () => {
   return Object.values(data).map((walletInfo) => ({
     ...walletInfo,
-    connector: connectors[walletInfo.id],
-  }));
+    connector: connectors[walletInfo.id](),
+  }))
 };

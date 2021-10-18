@@ -5,5 +5,4 @@ export const ALGOSIGNER = {
   name: "AlgoSigner",
   logo: AlgoSignerLogo,
   type: "injected",
-  check: "isAlgoSigner"
 };
