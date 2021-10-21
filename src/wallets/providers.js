@@ -1,4 +1,12 @@
-import WalletConnectLogo from "./logos/walletconnect-circle.svg";
+import MyAlgoWalletLogo from "./logos/myalgowallet.png";
+import WalletConnectLogo from "./logos/walletconnect.png";
+
+export const MYALGOWALLET = {
+  id: "myalgowallet",
+  name: "MyAlgoWallet",
+  logo: MyAlgoWalletLogo,
+  type: "qrcode",
+};
 
 export const WALLETCONNECT = {
   id: "walletconnect",

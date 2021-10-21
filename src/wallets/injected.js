@@ -1,7 +1,7 @@
 import AlgoSignerLogo from "./logos/algosigner.svg";
 
 export const ALGOSIGNER = {
-  id: "injected",
+  id: "algosigner",
   name: "AlgoSigner",
   logo: AlgoSignerLogo,
   type: "injected",

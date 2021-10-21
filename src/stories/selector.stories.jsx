@@ -26,9 +26,11 @@ const Template = (args) => (
 export const Basic = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Basic.args = {
-  returnWallet: (data) => {
-    console.log(data.connector.check());
-    console.log(data.connector.connect());
-    console.log(data.connector.provider);
-  },
+  returnWallet: async (data) => {
+    if (!!data) {
+      console.log(data.connector.check());
+      console.log(await data.connector.connect());
+      console.log(data.connector.provider);
+    }
+  }
 };

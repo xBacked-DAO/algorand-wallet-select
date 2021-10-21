@@ -1,7 +1,9 @@
-import injected from "./injected";
+import algosigner from "./algosigner";
+import myalgowallet from "./myalgowallet";
 import walletconnect from "./walletconnect";
 
 export {
-  injected,
+  algosigner,
+  myalgowallet,
   walletconnect,
 };

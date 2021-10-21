@@ -2,7 +2,7 @@ const checkConnection = () => {
   return (typeof AlgoSigner !== 'undefined');
 };
 
-const ConnectToInjected = () => {
+const ConnectToAlgoSigner = () => {
   if (typeof window === 'undefined') {
     return {
       provider: AlgoSigner,
@@ -12,4 +12,4 @@ const ConnectToInjected = () => {
   }
 }
 
-export default ConnectToInjected;
+export default ConnectToAlgoSigner;
