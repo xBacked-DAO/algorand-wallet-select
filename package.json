@@ -1,7 +1,9 @@
 {
-  "name": "algorand-wallet-select",
+  "name": "@xroark/algorand-wallet-select",
   "version": "0.1.0",
-  "private": true,
+  "publishConfig": {
+    "access": "restricted"
+  },
   "description": "Web3 Algorand wallet selector",
   "main": "dist/index.js",
   "unpkg": "dist/index.js",
@@ -23,6 +25,7 @@
     "@walletconnect/client": "^1.6.6",
     "@walletconnect/qrcode-modal": "^1.6.6",
     "babel-eslint": "^10.1.0",
+    "babel-loader": "8.1.0",
     "classnames": "^2.2.6",
     "postcss-cli": "^7.1.0",
     "postcss-import": "^12.0.1",
@@ -100,5 +103,6 @@
         }
       }
     ]
-  }
+  },
+  "packageManager": "yarn@3.0.2"
 }
