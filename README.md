@@ -1,47 +1,53 @@
-# Algorand Wallet Selector
+# Algorand Wallet Select
 
 A single Web3 / Algorand provider solution for all Wallets.
 
 ## Introduction
 
-AlgorandWalletSelector is an easy-to-use library to help developers add support for multiple providers in their apps with a simple customizable configuration.
+AlgorandWalletSelect is an easy-to-use library to help developers add support for multiple providers in their apps with a simple customizable configuration.
 
-By default AlgorandWalletSelector Library supports injected providers like (AlgoSigner, MyAlgoWallet, etc) and WalletConnect (Official AlgorandWallet, etc). You can also easily configure the library to support more wallets.
+By default AlgorandWalletSelect Library supports injected providers like (AlgoSigner, MyAlgoWallet, etc) and WalletConnect (OfficialAlgorandWallet, etc). You can also easily configure the library to support more wallets.
 
 ## Preview
 
 You can test the library on: [https://xbacked.io/](https://xbacked.io/)
 
-## Projects using AlgorandWalletSelector
+## Projects using AlgorandWalletSelect
 
 Open a PR to add your project to the list!
 
 - [xBacked DAO](https://xbacked.io/)
 
-## Inspiration
-
-[Web3Modal/Ethereum](https://github.com/Web3Modal/web3modal)
-
 ## Usage
 
-1. Install AlgorandWalletSelector NPM package
+1. Install the AlgorandWalletSelect NPM package
 
 ```bash
-npm install --save algorand-wallet-selector
+npm install --save algorand-wallet-select
 # OR
-yarn add aweb3wallet
+yarn add algorand-wallet-select
 ```
 
-2. Add algorand-wallet-selector to your Dapp as follows
+2. Add algorand-wallet-select to your Dapp as follows
 
 ```javascript
-import AlgorandWalletSelector from "algorand-wallet-selector";
+import { Selector } from "algorand-wallet-select";
 
-const provider = new AlgorandWalletSelector({
-  network: "mainnet",
-});
+const returnWallet = async (data) => {
+  if (!!data) {
+    console.log(data.connector.check());
+    console.log(await data.connector.connect());
+    console.log(data.connector.provider);
+  }
+};
 
-const wallet = await provider.connectTo("walletconnect");
+const Template = (args) => (
+  <div>
+    <h1 className="text-lg">Algorand Wallet Selector</h1>
+    <p>Built with 💚 by xBacked</p>
+    <Selector returnWallet={returnWallet} />
+  </div>
+);
 ```
 
 ## Adding a new provider
