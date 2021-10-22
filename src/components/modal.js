@@ -11,7 +11,7 @@ export const Modal = ({ isOpen, closeModal }) => {
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog
         as="div"
-        className="fixed inset-0 z-10 overflow-y-auto"
+        className="bg-gray-300 bg-opacity-25 fixed inset-0 z-10 overflow-y-auto"
         onClose={closeModal}
       >
         <div className="min-h-screen px-4 text-center">

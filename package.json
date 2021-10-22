@@ -1,6 +1,6 @@
 {
   "name": "@xroark/algorand-wallet-select",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "publishConfig": {
     "access": "restricted"
   },
@@ -39,6 +39,7 @@
     "yarn": "^1.22.4"
   },
   "scripts": {
+    "push": "npm run compile && npm publish",
     "build:css": "postcss src/styles/index.css -o src/styles/main.css",
     "watch:css": "postcss src/styles/index.css -o src/styles/main.css -w",
     "start": "npm-run-all -p watch:css storybook",
@@ -51,8 +52,25 @@
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "clean": "rimraf dist",
-    "compile": "yarn clean && cross-env NODE_ENV=production babel src/components --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,stories.js,__snapshots__"
+    "compile": "yarn clean && cross-env NODE_ENV=production babel src --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,stories.js,__snapshots__"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xBacked-DAO/algorand-wallet-selector.git"
+  },
+  "keywords": [
+    "algorand",
+    "wallet",
+    "web3",
+    "provider",
+    "modal"
+  ],
+  "author": "xBacked DAO",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xBacked-DAO/algorand-wallet-selector/issues"
+  },
+  "homepage": "https://github.com/xBacked-DAO/algorand-wallet-selector#readme",
   "devDependencies": {
     "@babel/cli": "^7.15.7",
     "@babel/preset-env": "^7.15.8",
@@ -103,6 +121,5 @@
         }
       }
     ]
-  },
-  "packageManager": "yarn@3.0.2"
+  }
 }
