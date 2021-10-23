@@ -1,5 +1,5 @@
-import { Selector } from './components';
+import { WalletSelector } from './components';
 
 export {
-  Selector
+  WalletSelector
 };

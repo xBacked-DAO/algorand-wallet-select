@@ -1,7 +1,7 @@
 import '../styles/main.css'
 
-import { Selector } from './selector';
+import { WalletSelector } from './selector';
 
 export {
-    Selector
+    WalletSelector
 };

@@ -1,19 +1,14 @@
 {
   "name": "@xroark/algorand-wallet-select",
-  "version": "0.1.4",
+  "version": "0.1.13",
   "publishConfig": {
     "access": "restricted"
   },
   "description": "Web3 Algorand wallet selector",
-  "main": "dist/index.js",
-  "unpkg": "dist/index.js",
-  "directories": {
-    "dist": "dist",
-    "test": "test"
-  },
+  "main": "index.js",
+  "unpkg": "index.js",
   "files": [
-    "dist",
-    "README.md"
+    "*"
   ],
   "dependencies": {
     "@headlessui/react": "^1.4.1",
@@ -39,7 +34,8 @@
     "yarn": "^1.22.4"
   },
   "scripts": {
-    "push": "npm run compile && npm publish",
+    "push": "npm run prepush && cd ./dist && npm publish",
+    "prepush": "npm run compile && cp package.json ./dist && cp README.md ./dist && cp LICENSE ./dist",
     "build:css": "postcss src/styles/index.css -o src/styles/main.css",
     "watch:css": "postcss src/styles/index.css -o src/styles/main.css -w",
     "start": "npm-run-all -p watch:css storybook",

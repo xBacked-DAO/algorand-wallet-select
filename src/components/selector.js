@@ -7,7 +7,7 @@ import { ProvideWallet } from '../context/ProvideWallet';
 /**
  * Primary UI component for user interaction
  */
-export const Selector = ({ returnWallet }) => {
+export const WalletSelector = ({ returnWallet }) => {
   return (
     <div>
       <ProvideWallet>
@@ -45,6 +45,6 @@ const SelectorContent = ({ returnWallet }) => {
   );
 };
 
-Selector.propTypes = {
+WalletSelector.propTypes = {
   returnWallet: PropTypes.func,
 };
