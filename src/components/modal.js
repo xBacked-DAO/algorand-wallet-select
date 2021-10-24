@@ -56,7 +56,6 @@ export const Modal = ({ isOpen, closeModal }) => {
 const ModalContent = ({ closeModal }) => {
   const { setWallet } = useWallet();
   const onClick = (walletInfo) => {
-    console.log(walletInfo)
     setWallet(walletInfo);
     closeModal(walletInfo);
   }
