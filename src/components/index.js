@@ -1,6 +1,6 @@
 import '../styles/main.css'
 
-import { WalletSelector } from './selector';
+import { WalletSelector } from './walletSelector';
 
 export {
     WalletSelector

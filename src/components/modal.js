@@ -2,7 +2,6 @@ import React, { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 
 import { WalletButton } from './walletButton'
-import { wallets } from '../wallets';
 
 import { useWallet } from '../context/ProvideWallet'
 
@@ -43,7 +42,7 @@ export const Modal = ({ isOpen, closeModal }) => {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="inline-block w-full max-w-lg p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white border shadow-xl rounded-2xl">
+            <div className="bg-gray-100 inline-block w-full max-w-lg p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white border shadow-xl rounded-2xl">
               <ModalContent closeModal={closeModal} />
             </div>
           </Transition.Child>
@@ -54,7 +53,7 @@ export const Modal = ({ isOpen, closeModal }) => {
 }
 
 const ModalContent = ({ closeModal }) => {
-  const { setWallet } = useWallet();
+  const { setWallet, getWallets } = useWallet();
   const onClick = (walletInfo) => {
     setWallet(walletInfo);
     closeModal(walletInfo);
@@ -68,8 +67,8 @@ const ModalContent = ({ closeModal }) => {
         Select wallet
       </Dialog.Title>
 
-      <div className="grid grid-cols-2 gap-8 mt-4">
-        {wallets.map(wallet =>
+      <div className="grid grid-cols-1 gap-8 mt-4">
+        {getWallets().map(wallet =>
           !!wallet ? (
             <WalletButton key={wallet.id} info={wallet} onClick={() => onClick(wallet)} />
           ) : null

@@ -1,5 +1,9 @@
-import { getWallets } from "./utils";
+import * as injected from "./injected";
+import * as providers from "./providers";
+import * as connectors from "./connectors";
 
-const wallets = getWallets();
-
-export { wallets };
+export {
+  injected,
+  providers,
+  connectors
+};

@@ -1,24 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types';
 
 import { Modal } from './modal'
-import { ProvideWallet } from '../context/ProvideWallet';
+import { ProvideWallet, useWallet } from '../context/ProvideWallet';
 
 /**
  * Primary UI component for user interaction
  */
-export const WalletSelector = ({ returnWallet }) => {
+export const WalletSelector = ({ returnWallet, wallets = [] }) => {
   return (
     <div>
       <ProvideWallet>
-        <SelectorContent returnWallet={returnWallet} />
+        <SelectorContent returnWallet={returnWallet} validWallets={wallets} />
       </ProvideWallet>
     </div>
   );
 };
 
-const SelectorContent = ({ returnWallet }) => {
+const SelectorContent = ({ returnWallet, validWallets }) => {
   let [isOpen, setIsOpen] = useState(false)
+  const { setValidWallets } = useWallet();
+
+  useEffect(() => {
+    setValidWallets(validWallets);
+  }, [validWallets]);
 
   const closeModal = (walletInfo) => {
     setIsOpen(false)
