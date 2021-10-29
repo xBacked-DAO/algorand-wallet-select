@@ -5,8 +5,8 @@
     "access": "restricted"
   },
   "description": "Web3 Algorand wallet selector",
-  "main": "index.js",
-  "unpkg": "index.js",
+  "main": "src/index.js",
+  "unpkg": "src/index.js",
   "files": [
     "*"
   ],
