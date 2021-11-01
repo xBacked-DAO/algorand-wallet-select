@@ -52,4 +52,5 @@ const SelectorContent = ({ returnWallet, validWallets }) => {
 
 WalletSelector.propTypes = {
   returnWallet: PropTypes.func,
+  wallets: PropTypes.array
 };

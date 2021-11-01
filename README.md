@@ -50,6 +50,22 @@ const Template = (args) => (
 );
 ```
 
+## Optional: Configuring wallets to display
+
+Simply do the following to only display the MyAlgo wallet. Valid `wallets` are `myalgowallet`, `algosigner` and `walletconnect`.
+```javascript
+const Template = (args) => (
+  <div>
+    <h1 className="text-lg">Algorand Wallet Selector</h1>
+    <p>Built with 💚 by xBacked</p>
+    <Selector
+      returnWallet={returnWallet}
+      wallets=["myalgowallet"]
+    />
+  </div>
+);
+```
+
 ## Adding a new provider
 
 Do you want to add your provider to Web3Modal? All logic for supported providers lives inside the src/providers directory. To add a new follow the following steps [here]().
