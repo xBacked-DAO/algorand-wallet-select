@@ -1,5 +1,7 @@
 # Algorand Wallet Select
 
+![](./assets/wallet-selector-demo.gif)
+
 A single Web3 / Algorand provider solution for all Wallets.
 
 ## Introduction
@@ -46,6 +48,22 @@ const Template = (args) => (
     <h1 className="text-lg">Algorand Wallet Selector</h1>
     <p>Built with 💚 by xBacked</p>
     <Selector returnWallet={returnWallet} />
+  </div>
+);
+```
+
+## Optional: Configuring wallets to display
+
+Simply do the following to only display the MyAlgo wallet. Valid `wallets` are `myalgowallet`, `algosigner` and `walletconnect`.
+```javascript
+const Template = (args) => (
+  <div>
+    <h1 className="text-lg">Algorand Wallet Selector</h1>
+    <p>Built with 💚 by xBacked</p>
+    <Selector
+      returnWallet={returnWallet}
+      wallets=["myalgowallet"]
+    />
   </div>
 );
 ```

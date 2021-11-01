@@ -18,15 +18,14 @@ export default {
 const Template = (args) => (
   <div>
     <h1 className="text-lg">Algorand Wallet Selector</h1>
-    <p>Built with 💚 by xBacked</p>
+    <a href="https://xbacked.io" className="hover:underline">Built with 💚 by xBacked</a>
     <WalletSelector {...args} />
   </div>
 );
 
-export const Basic = Template.bind({});
+export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Basic.args = {
-  wallets: ['myalgowallet'],
+Default.args = {
   returnWallet: async (data) => {
     if (!!data) {
       console.log(data.connector.check());
@@ -34,4 +33,17 @@ Basic.args = {
       console.log(data.connector.provider);
     }
   },
+};
+
+export const ConfigureWallets = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+ConfigureWallets.args = {
+  returnWallet: async (data) => {
+    if (!!data) {
+      console.log(data.connector.check());
+      console.log(await data.connector.connect());
+      console.log(data.connector.provider);
+    }
+  },
+  wallets: ['myalgowallet', 'walletconnect']
 };

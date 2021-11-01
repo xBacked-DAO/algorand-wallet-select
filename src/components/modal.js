@@ -13,6 +13,7 @@ export const Modal = ({ isOpen, closeModal }) => {
         className="bg-gray-300 bg-opacity-25 fixed inset-0 z-10 overflow-y-auto"
         onClose={closeModal}
       >
+        <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-25" />
         <div className="min-h-screen px-4 text-center">
           <Transition.Child
             as={Fragment}
@@ -67,13 +68,17 @@ const ModalContent = ({ closeModal }) => {
         Select wallet
       </Dialog.Title>
 
-      <div className="grid grid-cols-1 gap-8 mt-4">
+      <div className="grid grid-cols-2 gap-8 mt-4">
         {getWallets().map(wallet =>
           !!wallet ? (
             <WalletButton key={wallet.id} info={wallet} onClick={() => onClick(wallet)} />
           ) : null
         )}
       </div>
+      <p
+        className="text-xsm text-gray-500 bold text-center pt-5">
+          <a className="hover:underline" href="https://xbacked.io" target="_blank">Built by xBacked</a>
+        </p>
 
       <div className="hidden">
         <button
