@@ -2,7 +2,7 @@
   "name": "@xbacked/algorand-wallet-select",
   "version": "0.1.0",
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   },
   "description": "Web3 Algorand wallet selector",
   "main": "index.js",
