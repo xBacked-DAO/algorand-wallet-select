@@ -21,9 +21,9 @@ Open a PR to add your project to the list!
 1. Install the AlgorandWalletSelect NPM package
 
 ```bash
-npm install --save algorand-wallet-select
+npm install --save @xbacked/algorand-wallet-select
 # OR
-yarn add algorand-wallet-select
+yarn add @xbacked/algorand-wallet-select
 ```
 
 2. Add algorand-wallet-select to your Dapp as follows
