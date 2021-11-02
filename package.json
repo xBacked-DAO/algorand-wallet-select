@@ -1,5 +1,5 @@
 {
-  "name": "@xbacked/algorand-wallet-select",
+  "name": "@xbacked-dao/algorand-wallet-select",
   "version": "0.1.0",
   "publishConfig": {
     "access": "public"
