@@ -4932,9 +4932,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xroark/algorand-wallet-select@workspace:.":
+"@xbacked/algorand-wallet-select@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@xroark/algorand-wallet-select@workspace:."
+  resolution: "@xbacked/algorand-wallet-select@workspace:."
   dependencies:
     "@babel/cli": ^7.15.7
     "@babel/preset-env": ^7.15.8

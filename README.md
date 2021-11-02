@@ -10,10 +10,6 @@ AlgorandWalletSelect is an easy-to-use library to help developers add support fo
 
 By default AlgorandWalletSelect Library supports injected providers like (AlgoSigner, MyAlgoWallet, etc) and WalletConnect (OfficialAlgorandWallet, etc). You can also easily configure the library to support more wallets.
 
-## Preview
-
-You can test the library on: [https://xbacked.io/](https://xbacked.io/)
-
 ## Projects using AlgorandWalletSelect
 
 Open a PR to add your project to the list!
@@ -25,15 +21,15 @@ Open a PR to add your project to the list!
 1. Install the AlgorandWalletSelect NPM package
 
 ```bash
-npm install --save algorand-wallet-select
+npm install --save @xbacked/algorand-wallet-select
 # OR
-yarn add algorand-wallet-select
+yarn add @xbacked/algorand-wallet-select
 ```
 
 2. Add algorand-wallet-select to your Dapp as follows
 
 ```javascript
-import { Selector } from "algorand-wallet-select";
+import { WalletSelector } from "algorand-wallet-select";
 
 const returnWallet = async (data) => {
   if (!!data) {
@@ -47,7 +43,7 @@ const Template = (args) => (
   <div>
     <h1 className="text-lg">Algorand Wallet Selector</h1>
     <p>Built with 💚 by xBacked</p>
-    <Selector returnWallet={returnWallet} />
+    <WalletSelector returnWallet={returnWallet} />
   </div>
 );
 ```
@@ -60,7 +56,7 @@ const Template = (args) => (
   <div>
     <h1 className="text-lg">Algorand Wallet Selector</h1>
     <p>Built with 💚 by xBacked</p>
-    <Selector
+    <WalletSelector
       returnWallet={returnWallet}
       wallets=["myalgowallet"]
     />

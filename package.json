@@ -1,6 +1,6 @@
 {
-  "name": "@xroark/algorand-wallet-select",
-  "version": "0.1.15",
+  "name": "@xbacked/algorand-wallet-select",
+  "version": "0.1.0",
   "publishConfig": {
     "access": "restricted"
   },
@@ -48,7 +48,7 @@
     "lint:fix": "yarn lint --fix",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "clean": "rimraf dist",
+    "clean": "rm -r dist",
     "compile": "yarn clean && cross-env NODE_ENV=production babel src --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,stories.js,__snapshots__"
   },
   "repository": {
@@ -67,7 +67,7 @@
   "bugs": {
     "url": "https://github.com/xBacked-DAO/algorand-wallet-selector/issues"
   },
-  "homepage": "https://github.com/xBacked-DAO/algorand-wallet-selector#readme",
+  "homepage": "https://github.com/xBacked-DAO/algorand-wallet-selector",
   "devDependencies": {
     "@babel/cli": "^7.15.7",
     "@babel/preset-env": "^7.15.8",
