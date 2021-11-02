@@ -29,7 +29,7 @@ yarn add algorand-wallet-select
 2. Add algorand-wallet-select to your Dapp as follows
 
 ```javascript
-import { Selector } from "algorand-wallet-select";
+import { WalletSelector } from "algorand-wallet-select";
 
 const returnWallet = async (data) => {
   if (!!data) {
@@ -43,7 +43,7 @@ const Template = (args) => (
   <div>
     <h1 className="text-lg">Algorand Wallet Selector</h1>
     <p>Built with 💚 by xBacked</p>
-    <Selector returnWallet={returnWallet} />
+    <WalletSelector returnWallet={returnWallet} />
   </div>
 );
 ```
@@ -56,7 +56,7 @@ const Template = (args) => (
   <div>
     <h1 className="text-lg">Algorand Wallet Selector</h1>
     <p>Built with 💚 by xBacked</p>
-    <Selector
+    <WalletSelector
       returnWallet={returnWallet}
       wallets=["myalgowallet"]
     />
