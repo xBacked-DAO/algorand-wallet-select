@@ -10,10 +10,6 @@ AlgorandWalletSelect is an easy-to-use library to help developers add support fo
 
 By default AlgorandWalletSelect Library supports injected providers like (AlgoSigner, MyAlgoWallet, etc) and WalletConnect (OfficialAlgorandWallet, etc). You can also easily configure the library to support more wallets.
 
-## Preview
-
-You can test the library on: [https://xbacked.io/](https://xbacked.io/)
-
 ## Projects using AlgorandWalletSelect
 
 Open a PR to add your project to the list!

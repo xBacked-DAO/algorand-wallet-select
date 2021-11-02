@@ -1,6 +1,6 @@
 {
-  "name": "@xroark/algorand-wallet-select",
-  "version": "0.1.15",
+  "name": "@xbacked/algorand-wallet-select",
+  "version": "0.1.0",
   "publishConfig": {
     "access": "restricted"
   },
@@ -67,7 +67,7 @@
   "bugs": {
     "url": "https://github.com/xBacked-DAO/algorand-wallet-selector/issues"
   },
-  "homepage": "https://github.com/xBacked-DAO/algorand-wallet-selector#readme",
+  "homepage": "https://github.com/xBacked-DAO/algorand-wallet-selector",
   "devDependencies": {
     "@babel/cli": "^7.15.7",
     "@babel/preset-env": "^7.15.8",
