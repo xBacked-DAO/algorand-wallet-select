@@ -22,26 +22,21 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "8.1.0",
     "classnames": "^2.2.6",
-    "postcss-cli": "^7.1.0",
-    "postcss-import": "^12.0.1",
-    "postcss-nested": "^4.2.1",
-    "postcss-preset-env": "^6.7.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
-    "tailwindcss": "^1.1.4",
-    "webpack": "^4.44.2",
     "yarn": "^1.22.4"
   },
   "scripts": {
+    "tailwind": "npx tailwindcss --postcss -i ./src/styles/tailwind.css -o ./src/styles/output.css",
+    "build:tailwind": "NODE_ENV=production yarn run tailwind --minify",
+    "watch:tailwind": "yarn run tailwind --watch",
     "push": "npm run prepush && cd ./dist && npm publish",
     "prepush": "npm run compile && cp package.json ./dist && cp README.md ./dist && cp LICENSE ./dist",
-    "build:css": "postcss src/styles/index.css -o src/styles/main.css",
-    "watch:css": "postcss src/styles/index.css -o src/styles/main.css -w",
-    "start": "npm-run-all -p watch:css storybook",
+    "start": "npm-run-all -p watch:tailwind storybook",
     "start-client": "react-scripts start",
-    "build": "yarn run build:css && react-scripts build",
+    "build": "yarn build:tailwind && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint .",
@@ -78,6 +73,11 @@
     "@storybook/node-logger": "^6.3.12",
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.3.12",
+    "@tailwindcss/aspect-ratio": "^0.3.0",
+    "@tailwindcss/forms": "^0.3.4",
+    "@tailwindcss/line-clamp": "^0.2.2",
+    "@tailwindcss/typography": "^0.4.1",
+    "autoprefixer": "^10.4.0",
     "cross-env": "^7.0.3",
     "eslint": "7.30.0",
     "eslint-config-airbnb": "18.2.1",
@@ -87,13 +87,15 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.0",
     "eslint-plugin-react-hooks": "^4.1.2",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.3.11",
+    "tailwindcss": "^2.2.19"
   },
   "peerDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
-    "tailwindcss": "^1.1.4"
+    "tailwindcss": "^2"
   },
   "browserslist": {
     "production": [
