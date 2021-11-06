@@ -1,7 +1,5 @@
-import '../styles/main.css'
+import "../styles/output.css"
 
-import { WalletSelector } from './walletSelector';
+import { WalletSelector } from "./walletSelector"
 
-export {
-    WalletSelector
-};
+export { WalletSelector }
