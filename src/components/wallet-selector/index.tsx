@@ -78,7 +78,7 @@ export function WalletSelector(props: WalletSelectorComponentProps) {
                         rel="noreferrer"
                         target="_blank"
                       >
-                        Built by xBacked
+                        Built with 💜 by xBacked
                       </a>
                     </p>
 
