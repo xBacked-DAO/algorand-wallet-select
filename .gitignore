@@ -8,7 +8,13 @@ yarn.lock
 !.yarn/versions
 .pnp.*
 
+.next
 node_modules
 .vscode
 dist
 build
+.cache
+.*cache
+*.log
+output.css
+storybook-static

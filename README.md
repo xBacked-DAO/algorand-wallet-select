@@ -29,15 +29,15 @@ yarn add @xbacked-dao/algorand-wallet-select
 2. Add algorand-wallet-select to your Dapp as follows
 
 ```javascript
-import { WalletSelector } from "algorand-wallet-select";
+import { WalletSelector } from "@xbacked-dao/algorand-wallet-select"
 
-const returnWallet = async (data) => {
+const returnWallet = async (data: Connector) => {
   if (!!data) {
-    console.log(data.connector.check());
-    console.log(await data.connector.connect());
-    console.log(data.connector.provider);
+    console.log(data.connector.check())
+    console.log(await data.connector.connect())
+    console.log(data.connector.provider)
   }
-};
+}
 
 const Template = (args) => (
   <div>
@@ -45,12 +45,13 @@ const Template = (args) => (
     <p>Built with 💚 by xBacked</p>
     <WalletSelector returnWallet={returnWallet} />
   </div>
-);
+)
 ```
 
 ## Optional: Configuring wallets to display
 
 Simply do the following to only display the MyAlgo wallet. Valid `wallets` are `myalgowallet`, `algosigner` and `walletconnect`.
+
 ```javascript
 const Template = (args) => (
   <div>

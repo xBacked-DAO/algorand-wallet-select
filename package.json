@@ -1,122 +1,101 @@
 {
   "name": "@xbacked-dao/algorand-wallet-select",
+  "author": "xBacked DAO",
+  "module": "dist/algorand-wallet-select.esm.js",
   "version": "0.1.0",
+  "description": "Web3 Algorand wallet selector",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "homepage": "https://github.com/xBacked-DAO/algorand-wallet-select",
+  "bugs": {
+    "url": "https://github.com/xBacked-DAO/algorand-wallet-select/issues"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
   "publishConfig": {
     "access": "public"
   },
-  "description": "Web3 Algorand wallet selector",
-  "main": "index.js",
-  "unpkg": "index.js",
-  "files": [
-    "*"
-  ],
-  "dependencies": {
-    "@headlessui/react": "^1.4.1",
-    "@randlabs/myalgo-connect": "^1.1.1",
-    "@storybook/cli": "^6.3.12",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
-    "@testing-library/user-event": "^13.1.9",
-    "@walletconnect/client": "^1.6.6",
-    "@walletconnect/qrcode-modal": "^1.6.6",
-    "babel-eslint": "^10.1.0",
-    "babel-loader": "8.1.0",
-    "classnames": "^2.2.6",
-    "postcss-cli": "^7.1.0",
-    "postcss-import": "^12.0.1",
-    "postcss-nested": "^4.2.1",
-    "postcss-preset-env": "^6.7.0",
-    "prop-types": "^15.7.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "tailwindcss": "^1.1.4",
-    "webpack": "^4.44.2",
-    "yarn": "^1.22.4"
+  "engines": {
+    "node": ">=14"
   },
   "scripts": {
-    "push": "npm run prepush && cd ./dist && npm publish",
-    "prepush": "npm run compile && cp package.json ./dist && cp README.md ./dist && cp LICENSE ./dist",
-    "build:css": "postcss src/styles/index.css -o src/styles/main.css",
-    "watch:css": "postcss src/styles/index.css -o src/styles/main.css -w",
-    "start": "npm-run-all -p watch:css storybook",
-    "start-client": "react-scripts start",
-    "build": "yarn run build:css && react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "tailwind": "npx tailwindcss -i ./src/css/tailwind.css -o ./src/css/output.css",
+    "build:tailwind": "NODE_ENV=production yarn run tailwind --minify",
+    "watch:tailwind": "yarn run tailwind --watch",
+    "watch:tsdx": "tsdx watch",
+    "start": "npm-run-all -p watch:tsdx watch:tailwind",
+    "build": "yarn build:tailwind && tsdx build",
+    "test": "tsdx test --passWithNoTests",
     "lint": "eslint .",
     "lint:fix": "yarn lint --fix",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public",
+    "size": "size-limit",
+    "analyze": "size-limit --why",
     "clean": "rm -r dist",
-    "compile": "yarn clean && cross-env NODE_ENV=production babel src --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,stories.js,__snapshots__"
+    "postinstall": "husky install",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xBacked-DAO/algorand-wallet-selector.git"
-  },
-  "keywords": [
-    "algorand",
-    "wallet",
-    "web3",
-    "provider",
-    "modal"
-  ],
-  "author": "xBacked DAO",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/xBacked-DAO/algorand-wallet-selector/issues"
-  },
-  "homepage": "https://github.com/xBacked-DAO/algorand-wallet-selector",
-  "devDependencies": {
-    "@babel/cli": "^7.15.7",
-    "@babel/preset-env": "^7.15.8",
-    "@babel/preset-react": "^7.14.5",
-    "@storybook/addon-actions": "^6.3.12",
-    "@storybook/addon-essentials": "^6.3.12",
-    "@storybook/addon-links": "^6.3.12",
-    "@storybook/node-logger": "^6.3.12",
-    "@storybook/preset-create-react-app": "^3.2.0",
-    "@storybook/react": "^6.3.12",
-    "cross-env": "^7.0.3",
-    "eslint": "7.30.0",
-    "eslint-config-airbnb": "18.2.1",
-    "eslint-loader": "^4.0.2",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jest": "^24.3.6",
-    "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.11.0",
-    "eslint-plugin-react-hooks": "^4.1.2",
-    "npm-run-all": "^4.1.5"
+  "dependencies": {
+    "@headlessui/react": "^1.4.2",
+    "@randlabs/myalgo-connect": "^1.1.1",
+    "@walletconnect/client": "^1.6.6",
+    "@walletconnect/qrcode-modal": "^1.6.6",
+    "tailwindcss": "^2.2.19"
   },
   "peerDependencies": {
+    "react": ">=17"
+  },
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^6.0.4",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-info": "^5.3.21",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/addons": "^6.3.12",
+    "@storybook/react": "^6.3.12",
+    "@types/react": "^17.0.34",
+    "@types/react-dom": "^17.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/parser": "^5.3.0",
+    "autoprefixer": "^10.4.0",
+    "eslint": "^8.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-compat": "^3.13.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.4",
+    "import": "^0.0.6",
+    "lint-staged": "^11.2.6",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.4.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "tailwindcss": "^1.1.4"
+    "rollup-plugin-postcss": "^4.0.2",
+    "size-limit": "^6.0.4",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.4"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "eslintConfig": {
-    "overrides": [
-      {
-        "files": [
-          "**/*.stories.*"
-        ],
-        "rules": {
-          "import/no-anonymous-default-export": "off"
-        }
-      }
-    ]
+  "size-limit": [
+    {
+      "path": "dist/algorand-wallet-select.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/algorand-wallet-select.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
+    "*.{js,jsx,css,md,ts,tsx}": "prettier --write"
   }
 }
