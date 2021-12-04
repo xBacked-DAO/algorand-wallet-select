@@ -2,6 +2,7 @@ import { Dialog, Transition } from "@headlessui/react"
 import React, { Fragment, useState } from "react"
 import { AlgorandWalletConnector } from "../../algorand-wallet-connector"
 import { WalletSelectorComponentProps } from "../../types"
+import { DefaultButton } from './DefaultButton'
 import "../../css/output.css"
 
 export function WalletSelector(props: WalletSelectorComponentProps) {
@@ -11,13 +12,10 @@ export function WalletSelector(props: WalletSelectorComponentProps) {
       {(wallets) => (
         <>
           <div className="flex items-center justify-center">
-            <button
-              className="inline-flex items-center px-4 py-2 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md shadow-sm hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-              onClick={() => setModalOpen(true)}
-              type="button"
-            >
-              Connect wallet
-            </button>
+            { props.children
+              ? React.cloneElement(props.children, { onClick: () => setModalOpen(true) })
+              : <DefaultButton onClick={() => setModalOpen(true)} />
+            }
           </div>
           <Transition appear as={Fragment} show={modalOpen}>
             <Dialog
@@ -62,7 +60,10 @@ export function WalletSelector(props: WalletSelectorComponentProps) {
                         <button
                           className="flex flex-col items-center justify-center p-4 bg-white rounded-md shadow xcard hover:shadow-md focus:outline-none"
                           key={wallet.name}
-                          onClick={() => props.onChange(wallet)}
+                          onClick={async () => {
+                            await props.onChange(wallet)
+                            setModalOpen(false)
+                          }}
                         >
                           <div className="inline-flex items-center justify-center w-16 h-16 border border-gray-200 rounded-full">
                             <wallet.logo className="object-cover object-center" />
@@ -78,7 +79,7 @@ export function WalletSelector(props: WalletSelectorComponentProps) {
                         rel="noreferrer"
                         target="_blank"
                       >
-                        Built by xBacked
+                        Built with 💜 by xBacked
                       </a>
                     </p>
 
