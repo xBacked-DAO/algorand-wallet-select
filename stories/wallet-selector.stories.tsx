@@ -26,7 +26,14 @@ const Template = (args) => (
       </h2>
       <div className="flex mt-8 lg:mt-0 lg:flex-shrink-0">
         <div className="inline-flex rounded-md shadow">
-          <WalletSelector {...args} />
+          <WalletSelector {...args}>
+            <button
+              className="inline-flex items-center px-4 py-2 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md shadow-sm hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+              type="button"
+            >
+              Connect your wallet
+            </button>
+          </WalletSelector>
         </div>
       </div>
     </div>

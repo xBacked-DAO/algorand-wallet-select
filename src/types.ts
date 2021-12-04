@@ -10,7 +10,12 @@ export interface Connector {
 
 export type WalletSelectorComponentProps = {
   wallets?: string[]
+  children?: JSX.Element
   onChange: (wallet: Connector) => unknown
+}
+
+export type DefaultButtonComponentProps = {
+  onClick: () => void
 }
 
 export enum ConnectorType {
