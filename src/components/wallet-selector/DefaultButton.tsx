@@ -1,7 +1,7 @@
 import React from "react"
 import { DefaultButtonComponentProps } from "../../types"
 
-export function DefaultButton(props : DefaultButtonComponentProps) {
+export function DefaultButton(props: DefaultButtonComponentProps) {
   return (
     <button
       type="button"

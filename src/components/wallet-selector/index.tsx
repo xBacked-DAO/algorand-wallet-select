@@ -2,7 +2,7 @@ import { Dialog, Transition } from "@headlessui/react"
 import React, { Fragment, useState } from "react"
 import { AlgorandWalletConnector } from "../../algorand-wallet-connector"
 import { WalletSelectorComponentProps } from "../../types"
-import { DefaultButton } from './DefaultButton'
+import { DefaultButton } from "./DefaultButton"
 import "../../css/output.css"
 
 export function WalletSelector(props: WalletSelectorComponentProps) {
@@ -12,10 +12,11 @@ export function WalletSelector(props: WalletSelectorComponentProps) {
       {(wallets) => (
         <>
           <div className="flex items-center justify-center">
-            { props.children
-              ? React.cloneElement(props.children, { onClick: () => setModalOpen(true) })
-              : <DefaultButton onClick={() => setModalOpen(true)} />
-            }
+            {props.children ? (
+              React.cloneElement(props.children, { onClick: () => setModalOpen(true) })
+            ) : (
+              <DefaultButton onClick={() => setModalOpen(true)} />
+            )}
           </div>
           <Transition appear as={Fragment} show={modalOpen}>
             <Dialog
