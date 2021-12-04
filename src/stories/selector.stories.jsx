@@ -19,7 +19,14 @@ const Template = (args) => (
   <div>
     <h1 className="text-lg">Algorand Wallet Selector</h1>
     <a href="https://xbacked.io" className="hover:underline">Built with 💚 by xBacked</a>
-    <WalletSelector {...args} />
+    <WalletSelector {...args}>
+      <button
+        type="button"
+        className="px-4 py-2 text-sm font-medium text-white bg-black rounded-md bg-opacity-100 hover:bg-opacity-75 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+      >
+        Connect your wallet
+      </button>
+    </WalletSelector>
   </div>
 );
 

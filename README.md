@@ -43,7 +43,14 @@ const Template = (args) => (
   <div>
     <h1 className="text-lg">Algorand Wallet Selector</h1>
     <p>Built with 💚 by xBacked</p>
-    <WalletSelector returnWallet={returnWallet} />
+    <WalletSelector returnWallet={returnWallet}>
+      <button
+        type="button"
+        className="px-4 py-2 text-sm font-medium text-white bg-black rounded-md bg-opacity-100 hover:bg-opacity-75 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+      >
+        Connect your wallet
+      </button>
+    </WalletSelector>
   </div>
 );
 ```
@@ -51,6 +58,9 @@ const Template = (args) => (
 ## Optional: Configuring wallets to display
 
 Simply do the following to only display the MyAlgo wallet. Valid `wallets` are `myalgowallet`, `algosigner` and `walletconnect`.
+
+**Note**: If you do not pass a button child, the default WalletSelector button will be used.
+
 ```javascript
 const Template = (args) => (
   <div>
