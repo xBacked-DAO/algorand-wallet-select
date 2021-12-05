@@ -31,19 +31,21 @@ yarn add @xbacked-dao/algorand-wallet-select
 ```javascript
 import { WalletSelector } from "@xbacked-dao/algorand-wallet-select"
 
-const returnWallet = async (data: Connector) => {
-  if (!!data) {
-    console.log(data.connector.check())
-    console.log(await data.connector.connect())
-    console.log(data.connector.provider)
-  }
-}
-
 const Template = (args) => (
   <div>
     <h1 className="text-lg">Algorand Wallet Selector</h1>
-    <p>Built with 💚 by xBacked</p>
-    <WalletSelector returnWallet={returnWallet} />
+    <p>Built with 💜 by xBacked</p>
+    <WalletSelector
+      onChange={async (connector: Connector) => {
+        try {
+          console.log(connector.check())
+          console.log(await connector.connect())
+          console.log(connector.provider)
+        } catch (e) {
+          console.log(e)
+        }
+      }}
+    />
   </div>
 )
 ```
@@ -58,7 +60,15 @@ const Template = (args) => (
     <h1 className="text-lg">Algorand Wallet Selector</h1>
     <p>Built with 💚 by xBacked</p>
     <WalletSelector
-      returnWallet={returnWallet}
+      onChange={async (connector: Connector) => {
+        try {
+          console.log(connector.check())
+          console.log(await connector.connect())
+          console.log(connector.provider)
+        } catch (e) {
+          console.log(e)
+        }
+      }}
       wallets=["myalgowallet"]
     />
   </div>
