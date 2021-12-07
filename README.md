@@ -41,7 +41,7 @@ const returnWallet = async (data) => {
 
 const Template = (args) => (
   <div>
-    <h1 className="text-lg">Algorand Wallet Selector</h1>
+    <h1 className="ws-text-lg">Algorand Wallet Selector</h1>
     <p>Built with 💚 by xBacked</p>
     <WalletSelector returnWallet={returnWallet} />
   </div>
@@ -54,7 +54,7 @@ Simply do the following to only display the MyAlgo wallet. Valid `wallets` are `
 ```javascript
 const Template = (args) => (
   <div>
-    <h1 className="text-lg">Algorand Wallet Selector</h1>
+    <h1 className="ws-text-lg">Algorand Wallet Selector</h1>
     <p>Built with 💚 by xBacked</p>
     <WalletSelector
       returnWallet={returnWallet}

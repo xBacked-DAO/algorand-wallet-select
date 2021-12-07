@@ -10,11 +10,11 @@ export const Modal = ({ isOpen, closeModal }) => {
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog
         as="div"
-        className="bg-gray-300 bg-opacity-25 fixed inset-0 z-10 overflow-y-auto"
+        className="ws-bg-gray-300 ws-bg-opacity-25 ws-fixed ws-inset-0 z-10 ws-overflow-y-auto"
         onClose={closeModal}
       >
-        <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-25" />
-        <div className="min-h-screen px-4 text-center">
+        <Dialog.Overlay className="ws-fixed ws-inset-0 ws-bg-black ws-bg-opacity-25" />
+        <div className="ws-min-h-screen ws-px-4 ws-text-center">
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -24,12 +24,12 @@ export const Modal = ({ isOpen, closeModal }) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="fixed inset-0" />
+            <Dialog.Overlay className="ws-fixed inset-0" />
           </Transition.Child>
 
           {/* This element is to trick the browser into centering the modal contents. */}
           <span
-            className="inline-block h-screen align-middle"
+            className="ws-inline-block ws-h-screen ws-align-middle"
             aria-hidden="true"
           >
             &#8203;
@@ -43,7 +43,7 @@ export const Modal = ({ isOpen, closeModal }) => {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="bg-gray-100 inline-block w-full max-w-lg p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white border shadow-xl rounded-2xl">
+            <div className="ws-bg-gray-100 ws-inline-block ws-w-full ws-max-w-lg ws-p-6 ws-my-8 ws-overflow-hidden ws-text-left ws-align-middle ws-transition-all ws-transform ws-bg-white ws-border ws-shadow-xl ws-rounded-2xl">
               <ModalContent closeModal={closeModal} />
             </div>
           </Transition.Child>
@@ -63,12 +63,12 @@ const ModalContent = ({ closeModal }) => {
     <>
       <Dialog.Title
         as="h3"
-        className="text-lg font-medium leading-6 text-gray-900"
+        className="ws-text-lg ws-font-medium ws-leading-6 ws-text-gray-900"
       >
         Select wallet
       </Dialog.Title>
 
-      <div className="grid grid-cols-2 gap-8 mt-4">
+      <div className="ws-grid ws-grid-cols-2 ws-gap-8 ws-mt-4">
         {getWallets().map(wallet =>
           !!wallet ? (
             <WalletButton key={wallet.id} info={wallet} onClick={() => onClick(wallet)} />
@@ -76,14 +76,14 @@ const ModalContent = ({ closeModal }) => {
         )}
       </div>
       <p
-        className="text-xsm text-gray-500 bold text-center pt-5">
-          <a className="hover:underline" href="https://xbacked.io" target="_blank">Built by xBacked</a>
+        className="ws-text-xsm ws-text-gray-500 ws-bold ws-text-center ws-pt-5">
+          <a className="ws-hover:underline" href="https://xbacked.io" target="_blank">Built by xBacked</a>
         </p>
 
-      <div className="hidden">
+      <div className="ws-hidden">
         <button
           type="button"
-          className="inline-flex justify-center px-4 py-2 text-sm font-medium text-red-900 bg-red-100 border border-transparent rounded-md hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-red-500"
+          className="ws-inline-flex ws-justify-center ws-px-4 ws-py-2 ws-text-sm ws-font-medium ws-text-red-900 ws-bg-red-100 ws-border ws-border-transparent ws-rounded-md ws-hover:bg-red-200 ws-focus:outline-none ws-focus-visible:ring-2 ws-focus-visible:ring-offset-2 ws-focus-visible:ring-red-500"
           onClick={closeModal}
         >
           Cancel
