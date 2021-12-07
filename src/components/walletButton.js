@@ -4,10 +4,10 @@ export const WalletButton = ({ info, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className="xcard bg-white flex flex-col p-2 justify-center items-center rounded-md shadow hover:shadow-md focus:outline-none"
+      className="ws-xcard bg-white ws-flex ws-flex-col ws-p-2 ws-justify-center ws-items-center ws-rounded-md ws-shadow ws-hover:shadow-md ws-focus:outline-none"
     >
-      <img src={info.logo} className="object-center object-cover rounded-full h-20 w-20" />
-      <p className="text-lg font-bold">
+      <img src={info.logo} className="ws-object-center ws-object-cover ws-rounded-full ws-h-20 ws-w-20" />
+      <p className="ws-text-lg ws-font-bold">
         {info.name}
       </p>
     </button>

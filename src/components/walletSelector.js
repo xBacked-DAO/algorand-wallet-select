@@ -36,11 +36,11 @@ const SelectorContent = ({ returnWallet, validWallets }) => {
 
   return (
     <>
-      <div className="flex items-center justify-center">
+      <div className="ws-flex ws-items-center ws-justify-center">
         <button
           type="button"
           onClick={openModal}
-          className="px-4 py-2 text-sm font-medium text-white bg-black rounded-md bg-opacity-100 hover:bg-opacity-75 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+          className="ws-px-4 ws-py-2 ws-text-sm ws-font-medium ws-text-white ws-bg-black ws-rounded-md ws-bg-opacity-100 ws-hover:bg-opacity-75 ws-focus:outline-none ws-focus-visible:ring-2 ws-focus-visible:ring-white ws-focus-visible:ring-opacity-75"
         >
           Connect wallet
         </button>
