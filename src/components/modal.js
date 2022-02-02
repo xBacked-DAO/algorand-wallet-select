@@ -44,7 +44,7 @@ export const Modal = ({ isOpen, closeModal }) => {
             leaveTo="opacity-0 scale-95"
           >
             <div className="ws-bg-gray-100 ws-inline-block ws-w-full ws-max-w-lg ws-p-6 ws-my-8 ws-overflow-hidden ws-text-left ws-align-middle ws-transition-all ws-transform ws-bg-white ws-border ws-shadow-xl ws-rounded-2xl">
-              <ModalContent closeModal={closeModal} />
+              <ModalContent closeModal={closeModal}  />
             </div>
           </Transition.Child>
         </div>
