@@ -10,13 +10,15 @@ type Props = {
   children: (connectors: Connector[]) => React.ReactNode
 }
 
+const DEFAULT_PROPS = {
+  wallets: [] as string[],
+}
+
 export class AlgorandWalletConnector extends React.Component<Props> {
+  static defaultProps = DEFAULT_PROPS
+
   constructor(props: Props) {
     super(props)
-  }
-
-  static DEFAULT_PROPS = {
-    wallets: [],
   }
 
   render() {
