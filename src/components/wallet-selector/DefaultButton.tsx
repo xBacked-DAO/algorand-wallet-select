@@ -4,8 +4,8 @@ import { DefaultButtonComponentProps } from "../../types"
 export function DefaultButton(props: DefaultButtonComponentProps) {
   return (
     <button
+      className="ws-px-4 ws-py-2 ws-text-sm ws-font-medium ws-text-white ws-bg-black ws-rounded-md ws-bg-opacity-100 ws-hover:bg-opacity-75 ws-focus:outline-none ws-focus-visible:ring-2 ws-focus-visible:ring-white ws-focus-visible:ring-opacity-75"
       type="button"
-      className="px-4 py-2 text-sm font-medium text-white bg-black rounded-md bg-opacity-100 hover:bg-opacity-75 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
       {...props}
     >
       Connect wallet

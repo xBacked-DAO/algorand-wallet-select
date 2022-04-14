@@ -11,7 +11,7 @@ export function WalletSelector(props: WalletSelectorComponentProps) {
     <AlgorandWalletConnector wallets={props.wallets}>
       {(wallets) => (
         <>
-          <div className="flex items-center justify-center">
+          <div className="ws-flex ws-items-center ws-justify-center">
             {props.children ? (
               React.cloneElement(props.children, { onClick: () => setModalOpen(true) })
             ) : (
@@ -21,61 +21,64 @@ export function WalletSelector(props: WalletSelectorComponentProps) {
           <Transition appear as={Fragment} show={modalOpen}>
             <Dialog
               as="div"
-              className="fixed inset-0 z-10 overflow-y-auto bg-gray-300 bg-opacity-25"
+              className="ws-fixed ws-inset-0 ws-z-10 ws-overflow-y-auto ws-bg-gray-300 ws-bg-opacity-25"
               onClose={() => setModalOpen(false)}
             >
-              <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-25" />
-              <div className="min-h-screen px-4 text-center">
+              <Dialog.Overlay className="ws-fixed ws-inset-0 ws-bg-black ws-bg-opacity-25" />
+              <div className="ws-min-h-screen ws-px-4 ws-text-center">
                 <Transition.Child
                   as={Fragment}
-                  enter="ease-out duration-300"
-                  enterFrom="opacity-0"
-                  enterTo="opacity-100"
-                  leave="ease-in duration-200"
-                  leaveFrom="opacity-100"
-                  leaveTo="opacity-0"
+                  enter="ws-ease-out ws-duration-300"
+                  enterFrom="ws-opacity-0"
+                  enterTo="ws-opacity-100"
+                  leave="ws-ease-in ws-duration-200"
+                  leaveFrom="ws-opacity-100"
+                  leaveTo="ws-opacity-0"
                 >
-                  <Dialog.Overlay className="fixed inset-0" />
+                  <Dialog.Overlay className="ws-fixed ws-inset-0" />
                 </Transition.Child>
 
                 {/* This element is to trick the browser into centering the modal contents. */}
-                <span aria-hidden="true" className="inline-block h-screen align-middle">
+                <span aria-hidden="true" className="ws-inline-block ws-h-screen ws-align-middle">
                   &#8203;
                 </span>
                 <Transition.Child
                   as={Fragment}
-                  enter="ease-out duration-300"
-                  enterFrom="opacity-0 scale-95"
-                  enterTo="opacity-100 scale-100"
-                  leave="ease-in duration-200"
-                  leaveFrom="opacity-100 scale-100"
-                  leaveTo="opacity-0 scale-95"
+                  enter="ws-ease-out ws-duration-300"
+                  enterFrom="ws-opacity-0 ws-scale-95"
+                  enterTo="ws-opacity-100 ws-scale-100"
+                  leave="ws-ease-in ws-duration-200"
+                  leaveFrom="ws-opacity-100 ws-scale-100"
+                  leaveTo="ws-opacity-0 ws-scale-95"
                 >
-                  <div className="inline-block w-full max-w-lg p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-gray-100 border shadow-xl rounded-2xl">
-                    <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
+                  <div className="ws-inline-block ws-w-full ws-max-w-lg ws-p-6 ws-my-8 ws-overflow-hidden ws-text-left ws-align-middle ws-transition-all ws-transform ws-bg-gray-100 ws-border ws-shadow-xl ws-rounded-2xl">
+                    <Dialog.Title
+                      as="h3"
+                      className="ws-text-lg ws-font-medium ws-leading-6 ws-text-gray-900"
+                    >
                       Select wallet
                     </Dialog.Title>
 
-                    <div className="grid grid-cols-2 gap-8 mt-4">
+                    <div className="ws-grid ws-grid-cols-2 ws-gap-8 ws-mt-4">
                       {wallets.map((wallet) => (
                         <button
-                          className="flex flex-col items-center justify-center p-4 bg-white rounded-md shadow xcard hover:shadow-md focus:outline-none"
+                          className="ws-flex ws-flex-col ws-items-center ws-justify-center ws-p-4 ws-bg-white ws-rounded-md ws-shadow ws-xcard ws-hover:shadow-md ws-focus:outline-none"
                           key={wallet.name}
                           onClick={async () => {
                             await props.onChange(wallet)
                             setModalOpen(false)
                           }}
                         >
-                          <div className="inline-flex items-center justify-center w-16 h-16 border border-gray-200 rounded-full">
-                            <wallet.logo className="object-cover object-center h-full w-full" />
+                          <div className="ws-inline-flex ws-items-center ws-justify-center ws-w-16 ws-h-16 ws-border ws-border-gray-200 ws-rounded-full">
+                            <wallet.logo className="ws-object-cover ws-object-center ws-h-full ws-w-full" />
                           </div>
-                          <p className="text-lg font-bold">{wallet.name}</p>
+                          <p className="ws-text-lg ws-font-bold">{wallet.name}</p>
                         </button>
                       ))}
                     </div>
-                    <p className="pt-5 text-base text-center text-gray-500 bold">
+                    <p className="ws-pt-5 ws-text-base ws-text-center ws-text-gray-500 ws-bold">
                       <a
-                        className="hover:underline"
+                        className="ws-hover:underline"
                         href="https://xbacked.io"
                         rel="noreferrer"
                         target="_blank"
@@ -84,9 +87,9 @@ export function WalletSelector(props: WalletSelectorComponentProps) {
                       </a>
                     </p>
 
-                    <div className="hidden">
+                    <div className="ws-hidden">
                       <button
-                        className="inline-flex justify-center px-4 py-2 text-sm font-medium text-red-900 bg-red-100 border border-transparent rounded-md hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-red-500"
+                        className="ws-inline-flex ws-justify-center ws-px-4 ws-py-2 ws-text-sm ws-font-medium ws-text-red-900 ws-bg-red-100 ws-border ws-border-transparent ws-rounded-md ws-hover:bg-red-200 ws-focus:outline-none ws-focus-visible:ring-2 ws-focus-visible:ring-offset-2 ws-focus-visible:ring-red-500"
                         onClick={() => setModalOpen(false)}
                         type="button"
                       >

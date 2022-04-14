@@ -33,19 +33,9 @@ import { WalletSelector } from "@xbacked-dao/algorand-wallet-select"
 
 const Template = (args) => (
   <div>
-    <h1 className="text-lg">Algorand Wallet Selector</h1>
-    <p>Built with 💜 by xBacked</p>
-    <WalletSelector
-      onChange={async (connector: Connector) => {
-        try {
-          console.log(connector.check())
-          console.log(await connector.connect())
-          console.log(connector.provider)
-        } catch (e) {
-          console.log(e)
-        }
-      }}
-    />
+    <h1 className="ws-text-lg">Algorand Wallet Selector</h1>
+    <p>Built with 💚 by xBacked</p>
+    <WalletSelector returnWallet={returnWallet} />
   </div>
 )
 ```
@@ -57,7 +47,7 @@ Simply do the following to only display the MyAlgo wallet. Valid `wallets` are `
 ```javascript
 const Template = (args) => (
   <div>
-    <h1 className="text-lg">Algorand Wallet Selector</h1>
+    <h1 className="ws-text-lg">Algorand Wallet Selector</h1>
     <p>Built with 💚 by xBacked</p>
     <WalletSelector
       onChange={async (connector: Connector) => {
@@ -77,7 +67,54 @@ const Template = (args) => (
 
 ## Adding a new provider
 
-Do you want to add your provider to Web3Modal? All logic for supported providers lives inside the src/providers directory. To add a new follow the following steps [here]().
+Do you want to add your provider to Web3Modal?
+
+Note: This flow will be simplified in future updates.
+
+All logic for supported providers lives inside `src/wallets/providers`.
+
+1. You must add a new connection definition to `src/wallets/providers` that matches the following signature (using MyAlgo as an example):
+
+```javascript
+// Import the package.
+import MyAlgo from "@randlabs/myalgo-connect"
+
+// Default export defining the instance and the standard interface.
+const ConnectToMyAlgo = () => {
+  // Construct any required state for the connector.
+  const myAlgoWallet = new MyAlgo()
+
+  // Must return the following object.
+  return {
+    // Instance defined above.
+    provider: myAlgoWallet,
+    // Asynchronous function wrapping the connection method for the provider.
+    connect: async () => await myAlgoWallet.connect(),
+    // An optional function to check connection status if possible.
+    check: () => false,
+  }
+}
+
+export default ConnectToMyAlgo
+```
+
+2. Add new connector to the default export in `src/wallets/providers`:
+
+```javascript
+import algosigner from "./algosigner"
+import myalgowallet from "./myalgowallet"
+import walletconnect from "./walletconnect"
+// Import here and export below.
+import myNewWallet from "./myNewWallet"
+
+export { algosigner, myalgowallet, walletconnect, myNewWallet }
+```
+
+3. Add a `.png` or `.svg` as a logo for the added wallet connector to `src/wallets/logos`
+
+4. Depending on the type of connector, create an entry in either the `src/wallets/injected.js` file or the `src/wallets/providers.js` file.
+
+5. After testing that the logo is displaying correctly, and you are able to return the valid instance create a pull request to this repository!
 
 ## License
 

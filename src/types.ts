@@ -2,11 +2,15 @@ export interface Connector {
   id: string
   name: string
   type: ConnectorType
-  logo(imageProps: Omit<JSX.IntrinsicElements["svg"], "vieWBox" | "xmlns">): JSX.Element
+  logo(imageProps: LogoType): JSX.Element
   provider(): unknown
   connect(): Promise<unknown>
   check(): boolean
 }
+
+type LogoType = SvgProps | ImgProps
+export type SvgProps = Omit<JSX.IntrinsicElements["svg"], "vieWBox" | "xmlns">
+export type ImgProps = Omit<JSX.IntrinsicElements["img"], "src" | "alt">
 
 export type WalletSelectorComponentProps = {
   wallets?: string[]

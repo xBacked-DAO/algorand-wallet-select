@@ -1,12 +1,12 @@
 import React from "react"
-import { Connector, ConnectorType } from "../types"
+import { Connector, ConnectorType, SvgProps } from "../../types"
 
 export class AlgoSigner implements Connector {
   public id = "algosigner"
   public name = "AlgoSigner"
   public type = ConnectorType.injected
 
-  logo(svgProps: Omit<JSX.IntrinsicElements["svg"], "viewBox" | "xmlns">) {
+  logo(svgProps: SvgProps) {
     return (
       <svg {...svgProps} viewBox="0 0 238 238" xmlns="http://www.w3.org/2000/svg">
         <path d="M51.705 145.042H116.705L107.705 155.042H51.705V145.042Z" fill="#D64500" />

@@ -2,7 +2,10 @@
   "name": "@xbacked-dao/algorand-wallet-select",
   "author": "xBacked DAO",
   "module": "dist/algorand-wallet-select.esm.js",
-  "version": "0.1.0",
+  "version": "0.1.3",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Web3 Algorand wallet selector",
   "license": "MIT",
   "main": "dist/index.js",
@@ -15,9 +18,6 @@
     "dist",
     "src"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "engines": {
     "node": ">=14"
   },
@@ -28,7 +28,7 @@
     "watch:tsdx": "tsdx watch",
     "push": "npm run prepush && cd ./dist && npm publish",
     "prepush": "npm run compile && cp package.json ./dist && cp README.md ./dist && cp LICENSE ./dist",
-    "start": "npm-run-all -p watch:tsdx watch:tailwind",
+    "start": "npm-run-all -p watch:tsdx watch:tailwind storybook",
     "build": "yarn build:tailwind && tsdx build",
     "test": "tsdx test --passWithNoTests",
     "lint": "eslint .",

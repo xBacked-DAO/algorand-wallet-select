@@ -1,6 +1,6 @@
 import React from "react"
 import MyAlgo from "@randlabs/myalgo-connect"
-import { Connector, ConnectorType } from "../types"
+import { Connector, ConnectorType, SvgProps } from "../../types"
 
 export class MyAlgoWallet implements Connector {
   public id = "myalgowallet"
@@ -13,7 +13,7 @@ export class MyAlgoWallet implements Connector {
     this.myAlgoWallet = new MyAlgo()
   }
 
-  logo(svgProps: Omit<JSX.IntrinsicElements["svg"], "vieWBox" | "xmlns">) {
+  logo(svgProps: SvgProps) {
     return (
       <svg {...svgProps} viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
         <path

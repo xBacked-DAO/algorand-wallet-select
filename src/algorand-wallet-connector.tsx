@@ -1,9 +1,6 @@
 import React from "react"
-import { MyAlgoWallet } from "./connectors/myalgowallet"
-import { WalletConnect } from "./connectors/walletconnect"
+import { SupportedConnectors } from "./connectors"
 import { Connector } from "./types"
-
-export const supportedConnectors = [new MyAlgoWallet(), new WalletConnect()]
 
 type Props = {
   wallets?: string[]
@@ -27,10 +24,10 @@ export class AlgorandWalletConnector extends React.Component<Props> {
     let connectors: Connector[] = []
 
     if (wallets && wallets.length > 0) {
-      connectors = supportedConnectors.filter((connector) => wallets.includes(connector.id))
+      connectors = SupportedConnectors.filter((connector) => wallets.includes(connector.id))
     }
 
-    if (connectors.length === 0) connectors = supportedConnectors
+    if (connectors.length === 0) connectors = SupportedConnectors
 
     return children(connectors)
   }

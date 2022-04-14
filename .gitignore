@@ -16,4 +16,4 @@ build
 .*cache
 *.log
 output.css
-storybook-static
+storybook-static/
