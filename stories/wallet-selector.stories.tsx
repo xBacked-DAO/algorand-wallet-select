@@ -16,19 +16,19 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args) => (
-  <div className="bg-white">
-    <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:py-24 lg:px-8 lg:flex lg:items-center lg:justify-between">
-      <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl">
-        <span className="block">Algorand Wallet Selector</span>
-        <span className="block text-lg font-bold tracking-wide text-indigo-600">
+  <div className="ws-bg-white">
+    <div className="ws-px-4 ws-py-12 ws-mx-auto ws-max-w-7xl ws-sm:px-6 ws-lg:py-24 ws-lg:px-8 ws-lg:flex ws-lg:items-center ws-lg:justify-between">
+      <h2 className="ws-text-3xl ws-font-extrabold ws-tracking-tight ws-text-gray-900 ws-md:text-4xl">
+        <span className="ws-block">Algorand Wallet Selector</span>
+        <span className="ws-block ws-text-lg ws-font-bold ws-tracking-wide ws-text-indigo-600">
           Built with 💜 by xBacked
         </span>
       </h2>
-      <div className="flex mt-8 lg:mt-0 lg:flex-shrink-0">
-        <div className="inline-flex rounded-md shadow">
+      <div className="ws-flex ws-mt-8 ws-lg:mt-0 ws-lg:flex-shrink-0">
+        <div className="ws-inline-flex ws-rounded-md ws-shadow">
           <WalletSelector {...args}>
             <button
-              className="inline-flex items-center px-4 py-2 text-base font-medium text-white bg-gray-900 border border-transparent rounded-md shadow-sm hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+              className="ws-inline-flex ws-items-center ws-px-4 ws-py-2 ws-text-base ws-font-medium ws-text-white ws-bg-gray-900 ws-border ws-border-transparent ws-rounded-md ws-shadow-sm ws-hover:bg-gray-800 ws-focus:outline-none ws-focus:ring-2 ws-focus:ring-offset-2 ws-focus:ring-gray-500"
               type="button"
             >
               Connect your wallet

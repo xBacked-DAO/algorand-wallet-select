@@ -14,7 +14,7 @@ export class WalletConnect implements Connector {
   public type = ConnectorType.qrcode
 
   logo(imgProps: ImgProps) {
-    return <img alt="Algorand Official Wallet" src="./algo.png" {...imgProps} />
+    return <img alt={self.name} src={require("./algo.png")} {...imgProps} />
   }
 
   provider() {

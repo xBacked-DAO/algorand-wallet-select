@@ -16,7 +16,7 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args) => (
-  <div className="items-center w-full min-h-screen py-20 bg-white flex-flex-col">
+  <div className="ws-items-center ws-w-full ws-min-h-screen ws-py-20 ws-bg-white ws-flex ws-flex-col">
     <WalletList {...args} />
   </div>
 )

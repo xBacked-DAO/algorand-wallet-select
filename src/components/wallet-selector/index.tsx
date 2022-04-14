@@ -59,7 +59,7 @@ export function WalletSelector(props: WalletSelectorComponentProps) {
                       Select wallet
                     </Dialog.Title>
 
-                    <div className="ws-grid ws-grid-cols-2 ws-gap-8 ws-mt-4">
+                    <div className="ws-grid ws-grid-cols-2 ws-gap-4 ws-mt-4">
                       {wallets.map((wallet) => (
                         <button
                           className="ws-flex ws-flex-col ws-items-center ws-justify-center ws-p-4 ws-bg-white ws-rounded-md ws-shadow ws-xcard ws-hover:shadow-md ws-focus:outline-none"
@@ -76,14 +76,16 @@ export function WalletSelector(props: WalletSelectorComponentProps) {
                         </button>
                       ))}
                     </div>
-                    <p className="ws-pt-5 ws-text-base ws-text-center ws-text-gray-500 ws-bold">
+                    <p className="ws-pt-5 ws-text-base ws-text-center ws-text-gray-600 ws-bold">
                       <a
                         className="ws-hover:underline"
                         href="https://xbacked.io"
                         rel="noreferrer"
                         target="_blank"
                       >
-                        Built with 💜 by xBacked
+                        <span>Built with</span>
+                        <span className="ws-ml-1 ws-mr-2">💜</span>
+                        <span>by xBacked</span>
                       </a>
                     </p>
 
