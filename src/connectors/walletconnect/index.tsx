@@ -10,11 +10,11 @@ const connector: WalletConnectClient = new WalletConnectClient({
 
 export class WalletConnect implements Connector {
   public id = "walletconnect"
-  public name = "Algorand Official Wallet"
+  public name = "Pera Wallet"
   public type = ConnectorType.qrcode
 
   logo(imgProps: ImgProps) {
-    return <img alt={self.name} src={require("./algo.png")} {...imgProps} />
+    return <img alt={self.name} src="https://github.com/perawallet.png" {...imgProps} />
   }
 
   provider() {
