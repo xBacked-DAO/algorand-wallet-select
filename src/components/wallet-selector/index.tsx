@@ -1,6 +1,6 @@
 import { Dialog, Transition } from "@headlessui/react"
 import React, { Fragment, useState } from "react"
-import { AlgorandWalletConnector } from "../../algorand-wallet-connector"
+import { AlgorandWalletConnector } from "../algorand-wallet-connector"
 import { WalletSelectorComponentProps } from "../../types"
 import { DefaultButton } from "./DefaultButton"
 import "../../css/output.css"

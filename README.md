@@ -71,9 +71,9 @@ Do you want to add your provider to Web3Modal?
 
 Note: This flow will be simplified in future updates.
 
-All logic for supported providers lives inside `src/wallets/providers`.
+All logic for supported providers lives inside `src/connectors`.
 
-1. You must add a new connection definition to `src/wallets/providers` that matches the following signature (using MyAlgo as an example):
+1. You must add a new connection definition to `src/connectors` that matches the following signature (using MyAlgo as an example):
 
 ```javascript
 // Import the package.
@@ -98,7 +98,7 @@ const ConnectToMyAlgo = () => {
 export default ConnectToMyAlgo
 ```
 
-2. Add new connector to the default export in `src/wallets/providers`:
+2. Add new connector to the default export in `src/connectors`:
 
 ```javascript
 import algosigner from "./algosigner"
@@ -112,7 +112,7 @@ export { algosigner, myalgowallet, walletconnect, myNewWallet }
 
 3. Add a `.png` or `.svg` as a logo for the added wallet connector to `src/wallets/logos`
 
-4. Depending on the type of connector, create an entry in either the `src/wallets/injected.js` file or the `src/wallets/providers.js` file.
+4. Depending on the type of connector, create an entry in either the `src/wallets/injected.js` file or the `src/connectors.js` file.
 
 5. After testing that the logo is displaying correctly, and you are able to return the valid instance create a pull request to this repository!
 

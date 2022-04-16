@@ -1,6 +1,6 @@
 import React from "react"
-import { SupportedConnectors } from "./connectors"
-import { Connector } from "./types"
+import { SupportedConnectors } from "../../connectors"
+import { Connector } from "../../types"
 
 type Props = {
   wallets?: string[]

@@ -1,5 +1,5 @@
 import React from "react"
-import { AlgorandWalletConnector } from "../../algorand-wallet-connector"
+import { AlgorandWalletConnector } from "../algorand-wallet-connector"
 import { WalletSelectorComponentProps } from "../../types"
 import "../../css/output.css"
 
