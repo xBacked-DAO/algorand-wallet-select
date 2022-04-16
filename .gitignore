@@ -12,5 +12,8 @@ node_modules
 .vscode
 dist
 build
+.cache
+.*cache
+*.log
 output.css
 storybook-static/

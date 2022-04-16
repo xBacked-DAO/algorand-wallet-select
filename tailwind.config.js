@@ -1,28 +1,25 @@
-const defaultTheme = require("tailwindcss/defaultTheme")
 const colors = require("tailwindcss/colors")
 
 module.exports = {
   mode: "jit",
-  prefix: 'ws-',
+  prefix: "ws-",
   purge: {
     mode: "all",
-    content: ["./public/index.html", "./src/**/*.{js,jsx}"],
+    content: ["./src/**/*.{js,ts,jsx,tsx,mdx}", "./stories/**/*.{js,ts,jsx,tsx,mdx}"],
   },
-  darkMode: "media",
-  future: "all",
+  darkMode: false, // or 'media' or 'class'
   theme: {
     colors: {
       ...colors,
+      white: "white",
+      black: "black",
       transparent: "transparent",
       gray: colors.blueGray,
     },
-    extend: {
-      fontFamily: {
-        sans: ["Inter var", ...defaultTheme.fontFamily.sans],
-      },
-      container: { center: true },
-    },
+    extend: {},
   },
-  variants: { extend: {} },
-  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/aspect-ratio"), require("@tailwindcss/line-clamp")],
+  variants: {
+    extend: {},
+  },
+  plugins: [],
 }
