@@ -1,5 +1,5 @@
 import MyAlgoWalletLogo from "./logos/myalgowallet.png";
-import AlgoWalletLogo from "./logos/algo.png";
+import PeraLogo from "./logos/pera.png";
 
 export const MYALGOWALLET = {
   id: "myalgowallet",
@@ -10,8 +10,8 @@ export const MYALGOWALLET = {
 
 export const WALLETCONNECT = {
   id: "walletconnect",
-  name: "Algorand Official Wallet",
-  logo: AlgoWalletLogo,
+  name: "Pera Wallet",
+  logo: PeraLogo,
   type: "qrcode",
   package: {
     required: [["infuraId", "rpc"]]
