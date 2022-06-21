@@ -28,9 +28,7 @@ export const Default = Template.bind({});
 Default.args = {
   returnWallet: async (data) => {
     if (!!data) {
-      console.log(data.connector.check());
-      console.log(await data.connector.connect());
-      console.log(data.connector.provider);
+      alert(`Connectin with ${data.id}`);
     }
   },
 };
@@ -40,10 +38,8 @@ export const ConfigureWallets = Template.bind({});
 ConfigureWallets.args = {
   returnWallet: async (data) => {
     if (!!data) {
-      console.log(data.connector.check());
-      console.log(await data.connector.connect());
-      console.log(data.connector.provider);
+      alert(`Connectin with ${data.id}`);
     }
   },
-  wallets: ['myalgowallet', 'walletconnect']
+  wallets: ['myalgowallet', 'walletconnect', 'fireblocks']
 };

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { injected, providers, connectors } from "../wallets";
+import { injected, providers } from "../wallets";
 
 const walletsData = {
   ...providers,
@@ -7,8 +7,7 @@ const walletsData = {
 };
 
 const allWallets = Object.values(walletsData).map((walletInfo) => ({
-  ...walletInfo,
-  connector: connectors[walletInfo.id](),
+  ...walletInfo
 }));
 
 export function useProvideWallet() {
