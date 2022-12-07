@@ -1,4 +1,5 @@
 import MyAlgoWalletLogo from "./logos/myalgowallet.png";
+import WalletConnectLogo from "./logos/walletconnect-circle.svg";
 import PeraLogo from "./logos/pera.png";
 import FireBlocksLogo from "./logos/fireblocks-logo.svg";
 
@@ -11,12 +12,16 @@ export const MYALGOWALLET = {
 
 export const WALLETCONNECT = {
   id: "walletconnect",
+  name: "WalletConnect",
+  logo: WalletConnectLogo,
+  type: "qrcode",
+};
+
+export const PERA = {
+  id: "pera",
   name: "Pera Wallet",
   logo: PeraLogo,
   type: "qrcode",
-  package: {
-    required: [["infuraId", "rpc"]]
-  }
 };
 
 export const FIRE_BLOCKS = {
@@ -24,7 +29,4 @@ export const FIRE_BLOCKS = {
   name: "Fireblocks",
   logo: FireBlocksLogo,
   type: "qrcode",
-  package: {
-    required: [["infuraId", "rpc"]]
-  }
 };
