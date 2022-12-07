@@ -41,5 +41,5 @@ ConfigureWallets.args = {
       alert(`Connectin with ${data.id}`);
     }
   },
-  wallets: ['myalgowallet', 'walletconnect', 'fireblocks']
+  wallets: ['myalgowallet', 'walletconnect', 'pera', 'exodus']
 };
