@@ -10,17 +10,17 @@ export const MYALGOWALLET = {
   type: "qrcode",
 };
 
-export const WALLETCONNECT = {
-  id: "walletconnect",
-  name: "WalletConnect",
-  logo: WalletConnectLogo,
-  type: "qrcode",
-};
-
 export const PERA = {
   id: "pera",
   name: "Pera Wallet",
   logo: PeraLogo,
+  type: "qrcode",
+};
+
+export const WALLETCONNECT = {
+  id: "walletconnect",
+  name: "WalletConnect",
+  logo: WalletConnectLogo,
   type: "qrcode",
 };
 

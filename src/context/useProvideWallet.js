@@ -23,8 +23,8 @@ export function useProvideWallet() {
   };
 
   const getWallets = () => {
-    const filteredWallets = validWallets.filter(wallet => (
-      allWallets.includes(wallet.id)
+    const filteredWallets = allWallets.filter(wallet => (
+      validWallets.includes(wallet.id)
     ));
     if (filteredWallets.length === 0) return allWallets;
     return filteredWallets;
