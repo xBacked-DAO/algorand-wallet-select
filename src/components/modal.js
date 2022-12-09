@@ -43,7 +43,7 @@ export const Modal = ({ isOpen, closeModal }) => {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="ws-bg-gray-100 ws-inline-block ws-w-full ws-max-w-lg ws-p-6 ws-my-8 ws-overflow-hidden ws-text-left ws-align-middle ws-transition-all ws-transform ws-border ws-shadow-xl ws-rounded-2xl">
+            <div className="ws-bg-gray-100 ws-inline-block ws-w-full ws-max-w-md ws-p-6 ws-my-8 ws-overflow-hidden ws-text-left ws-align-middle ws-transition-all ws-transform ws-border ws-shadow-xl ws-rounded-2xl">
               <ModalContent closeModal={closeModal}  />
             </div>
           </Transition.Child>
@@ -63,12 +63,12 @@ const ModalContent = ({ closeModal }) => {
     <>
       <Dialog.Title
         as="h3"
-        className="ws-text-lg ws-font-medium ws-leading-6 ws-text-gray-900"
+        className="ws-text-lg ws-font-semibold ws-leading-6 ws-text-gray-700 ws-text-center"
       >
         Select wallet
       </Dialog.Title>
 
-      <div className="ws-grid ws-grid-cols-2 ws-gap-8 ws-mt-4">
+      <div className="ws-grid ws-grid-cols-2 ws-gap-6 ws-mt-4">
         {getWallets().map(wallet =>
           !!wallet ? (
             <WalletButton key={wallet.id} info={wallet} onClick={() => onClick(wallet)} />
@@ -76,7 +76,7 @@ const ModalContent = ({ closeModal }) => {
         )}
       </div>
       <p
-        className="ws-text-xsm ws-text-gray-500 ws-bold ws-text-center ws-pt-5">
+        className="ws-text-xs ws-text-gray-500 ws-bold ws-text-center ws-pt-5">
           <a className="ws-hover:underline" href="https://xbacked.io" target="_blank">Built by xBacked</a>
         </p>
 
