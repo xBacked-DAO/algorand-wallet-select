@@ -23,10 +23,14 @@ export function useProvideWallet() {
   };
 
   const getWallets = () => {
-    const filteredWallets = allWallets.filter(wallet => (
-      validWallets.includes(wallet.id)
+    const allWalletsMap = {};
+    allWallets.map(wallet => allWalletsMap[wallet.id] = wallet);
+    console.log(allWalletsMap);
+    const filteredWallets = validWallets.map(walletId => (
+      allWalletsMap[walletId]
     ));
     if (filteredWallets.length === 0) return allWallets;
+    console.log(filteredWallets);
     return filteredWallets;
   };
 
