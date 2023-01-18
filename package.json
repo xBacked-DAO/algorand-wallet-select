@@ -1,6 +1,6 @@
 {
   "name": "@xbacked-dao/algorand-wallet-select",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "publishConfig": {
     "access": "public"
   },
@@ -17,8 +17,8 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.1.9",
-    "@walletconnect/client": "^1.6.6",
-    "@walletconnect/qrcode-modal": "^1.6.6",
+    "@walletconnect/client": "^1.8.0",
+    "@walletconnect/qrcode-modal": "^1.8.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "8.1.0",
     "classnames": "^2.2.6",
